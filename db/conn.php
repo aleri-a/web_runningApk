@@ -9,6 +9,13 @@
     $pass = '';
     $charset = 'utf8mb4';
 
+//Remote database connection
+    $host = 'remotemysql.com';
+    $db ='tN6xtPw2E2';
+    $user = 'tN6xtPw2E2';
+    $pass = 'jjAuFM0SUO';
+    $charset = 'utf8mb4';
+
     //in PDO conectivity, ie data source name ie way of connecting
     //drivers=mysql
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
