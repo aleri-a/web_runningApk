@@ -30,5 +30,7 @@ if(isset($_POST['change']))
 else
 {
     include 'includes/errormessage.php';
+    
+}
 
 ?>
