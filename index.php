@@ -3,7 +3,7 @@
     require_once 'includes/header.php';
     require_once 'db/conn.php';
 
-    $resultsSpecialties=$crud->getSpecialties();
+    $resultsSpecialties=$crudDB->getSpecialties();
 ?>
 
 

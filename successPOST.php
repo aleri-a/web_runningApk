@@ -6,7 +6,7 @@
 
 
     //checking does variable exist, ie does button exists,  if not then we dont have other necessary info 
-    // $crud variabla nam je u fajlu db/conn.php' tj na kraju, i to je objekat nase classes crud.php koja ima te fje osnovne insert koje vracaju true/false
+    // $crudDB variabla nam je u fajlu db/conn.php' tj na kraju, i to je objekat nase classes crud.php koja ima te fje osnovne insert koje vracaju true/false
     if(isset($_POST['submit'])){
         $fname= $_POST['firstName'];
         $lname= $_POST['lastName'];
@@ -16,11 +16,12 @@
         $email= $_POST['email'];
         $InputPassword= $_POST['InputPassword'];
 
-        $issuccess = $crud->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty);
+        $issuccess = $crudDB->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty);
+        $specialtyName=$crudDB->getSpecialtyBySpecialtyId($specialty);
 
         if($issuccess)
         {
-            echo "<h1 class='text-center text-success'> You Have been Registered! <h1>";
+            //echo "<h1 class='text-center text-success'> You Have been Registered! <h1>";
             include 'includes/successmessage.php';
         }
         else 
@@ -42,7 +43,7 @@
         <?php  echo $_POST['firstName'] . ' '. $_POST['lastName'];?>
     </h5>
     <h6 class="card-subtitle mb-2 text-muted">
-    <?php echo $_POST['specialty'];?>
+    <?php echo $specialtyName['name_specialty'];?>
     </h6>
     <p class="card-text">
        Phone: <?php echo $_POST['phone']; ?>

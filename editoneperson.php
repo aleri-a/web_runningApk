@@ -1,9 +1,10 @@
 <?php 
     $title= 'Edit recors';
     require_once 'includes/header.php';
+    require_once 'includes/auth_check.php'; //da li je ta osoba autorizovana da vidi ovo 
     require_once 'db/conn.php';
 
-    $resultsSpecialties=$crud->getSpecialties();
+    $resultsSpecialties=$crudDB->getSpecialties();
 
     if(!isset($_GET['id']))
     {
@@ -14,7 +15,7 @@
     else
     {
         $id=$_GET['id'];
-        $person= $crud->getOnePersonDetails($id);
+        $person= $crudDB->getOnePersonDetails($id);
       //  echo "<h1>".$person['specialty_id'] ."</h1>";
     //} na kraju fajla, da ukoliko je usao u prvo if da ne ispisuje korisniku ove html elemente 
 

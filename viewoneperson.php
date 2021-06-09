@@ -2,6 +2,7 @@
 //kod njega: view.php (video Viewing Record Details)
     $title= 'View One person at the time ';
     require_once 'includes/header.php';
+    require_once 'includes/auth_check.php'; //da li je ta osoba autorizovana da vidi ovo, ako ne onda dugme i dalje postoji ali ce ga prebaciti na  stranicu za login
     require_once 'db/conn.php';
 
     // Get person by id , proveravamo da li je taj parametar setovan tj da li ga ima u URLu
@@ -14,7 +15,7 @@
     else
     {        
         $id=$_GET['id'];
-        $result=$crud->getOnePersonDetails($id); 
+        $result=$crudDB->getOnePersonDetails($id); 
         //pristup crud imamo iz db/conn.php, na kraju tog dajla smo definisali $crud
         // $resut sada ima sve vrednosti iz baze tj to je array sa vrednostima 
         //dole uzimas parametre iz baze 

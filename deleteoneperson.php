@@ -1,8 +1,9 @@
 <?php
+    require_once 'includes/auth_check.php'; //da li je ta osoba autorizovana da vidi ovo 
     require_once 'db/conn.php';
     if(!$_GET['id'])
     {
-        include 'includes/errormessage.php';
+        include 'includes/errormessage.php';        
         header("Location: viewallpeople.php");
     }
     else
@@ -11,12 +12,12 @@
         $id=$_GET['id'];
         //echo '<h1>'.$id.'</h1>';
         //Call Delete function
-        $result=$crud->deleteOnePerson($id);
+        $result=$crudDB->deleteOnePerson($id);
 
         //Redirect to list
         if($result)
         {
-            header("Location: index.php");
+            header("Location: viewallpeople.php");
         }
         else
         {

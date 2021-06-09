@@ -3,11 +3,11 @@
     //and reduce the need to connect to db every time we need to do smth regarding db
     // connections can be expensive, do we want to minimize how often we want someone to connect to db
 
-    $host = '127.0.0.1';
-    $db ='runningapk_db';
-    $user = 'root';
-    $pass = '';
-    $charset = 'utf8mb4';
+    // $host = '127.0.0.1';
+    // $db ='runningapk_db';
+    // $user = 'root';
+    // $pass = '';
+    // $charset = 'utf8mb4';
 
 //Remote database connection
     $host = 'remotemysql.com';
@@ -35,6 +35,10 @@
 
 
     require_once 'crud.php';
-    $crud = new crud($pdo); // instance of mine class, so that i can use functions whenever i want in Index
+    require_once 'user.php';
+    $crudDB = new crud($pdo); // instance of mine class, so that i can use functions whenever i want in Index
+    $userDB = new user($pdo);
 
+
+    $userDB->insertUser("admin","password");
 ?>

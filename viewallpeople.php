@@ -2,9 +2,10 @@
     //kod njega je ovo viewrecords.php
     $title= 'View all registred people';
     require_once 'includes/header.php';
+    require_once 'includes/auth_check.php'; //da li je ta osoba autorizovana da vidi ovo 
     require_once 'db/conn.php';
 
-    $results=$crud->getAllPeopleDB();
+    $results=$crudDB->getAllPeopleDB();
 ?>
 
     <table class="table">

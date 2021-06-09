@@ -97,6 +97,27 @@ class crud
 
     }
 
+
+    public function getSpecialtyBySpecialtyId($idSpecialty)
+    {
+        try
+        {
+            $sql=  "SELECT * FROM `specialties` where specialty_id= :idSpec";
+            $stmt= $this->db->prepare($sql);
+            $stmt-> bindparam (':idSpec',$idSpecialty); 
+            $stmt->execute();
+            $result=$stmt->fetch();
+            return $result;
+           
+        }
+        catch (PDOException $e)
+        {
+            echo '   usao u catch getSpecialtyBySpecialtyId ';
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function getOnePersonDetails($id)
     {
         try

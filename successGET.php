@@ -3,10 +3,10 @@
     $title= 'Success';
     require_once 'includes/header.php';
 ?>
-
+<!-- 
 <h1 class="text-center text-success" >
 You have been Registred!
-</h1>
+</h1> -->
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">

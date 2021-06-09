@@ -15,8 +15,8 @@ if(isset($_POST['change']))
     
     //call Crud function
     
-    $res=$crud->editOnePerson($id,$fname,$lname,$dob,$email,$contact,$specialty);
-    //Redirect to index.php
+    $res=$crudDB->editOnePerson($id,$fname,$lname,$dob,$email,$contact,$specialty);
+    //Redirect to index.php 
     if($res)
     {
         header("Location: viewallpeople.php");
