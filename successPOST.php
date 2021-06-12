@@ -16,7 +16,19 @@
         $email= $_POST['email'];
         $InputPassword= $_POST['InputPassword'];
 
-        $issuccess = $crudDB->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty);
+        $orig_file= $_FILES["avatar"]["tmp_name"];
+        $extension=pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+        $target_dir='uploads/';
+        //$destination= $target_dir . basename($_FILES["avatar"]["name"]); //1 pokusaj, cista slika, ali posto vise osoba moze imati sliku 
+        //koja se zove profile.jpg onda cemo ukljuciti njihove email adresse i oni treba da budu jedinstveni i sad ce se skl==like zvati onako kako 
+        //je njihova email adressa 
+        $destination="$target_dir$email.$extension";
+        //uzimamo iz nase FILES control(u index.php) koja ima name=avatar uzimamo atribut 'name'
+        move_uploaded_file($orig_file,$destination);
+
+        
+
+        $issuccess = $crudDB->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$destination);
         $specialtyName=$crudDB->getSpecialtyBySpecialtyId($specialty);
 
         if($issuccess)
@@ -37,6 +49,7 @@
 
 </h1>
 
+<img src="<?php echo $destination; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"> 

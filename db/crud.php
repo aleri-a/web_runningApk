@@ -10,10 +10,10 @@ class crud
         $this->db = $conn;
     }
 
-    public function insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty){
+    public function insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$avatar_path){
         try {
-            $sql = "INSERT INTO `persons`(firstname, lastname, dateofbirth, emailaddress, contactnumber, speciality_id) 
-            VALUES (:fname,:lname,:dob,:email,:contact,:specialty)";
+            $sql = "INSERT INTO `persons`(firstname, lastname, dateofbirth, emailaddress, contactnumber, speciality_id,avatar_path) 
+            VALUES (:fname,:lname,:dob,:email,:contact,:specialty,:avatar_path)";
             //we need to write on this way because ado it requers in order to dont get sql injectyions ie to dont be possible 
             $stmt = $this->db->prepare($sql);
 
@@ -23,6 +23,7 @@ class crud
             $stmt->bindparam(':email',$email);
             $stmt->bindparam(':contact',$contact);
             $stmt->bindparam(':specialty',$specialty);
+            $stmt->bindparam(':avatar_path',$avatar_path);
 
             $stmt->execute();
             return true;

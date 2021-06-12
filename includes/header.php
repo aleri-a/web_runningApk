@@ -20,15 +20,14 @@ include_once 'includes/sessions.php';
     <title>Attendace - <?php echo $title?></title>
   </head>
   <body>
-    <div class="container">
-  <!-- NAVBAR -->
-  <!-- href='strana na koju idu '-->
+
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="index.php">Running APK (or logo)</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
         <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="viewallpeople.php">Registred people</a>
@@ -53,4 +52,10 @@ include_once 'includes/sessions.php';
       </div>
     </div>
 </nav>
+
+
+    <div class="container">
+  <!-- NAVBAR -->
+  <!-- href='strana na koju idu '-->
+ 
 </br>

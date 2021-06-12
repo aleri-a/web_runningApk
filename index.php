@@ -10,7 +10,7 @@
     <h1 class="text-center">Registration for Running App</h1>
 
    <!-- <form method="get" action="successGET.php"> -->
-   <form method="post" action="successPOST.php">
+   <form method="post" action="successPOST.php" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="firstName" class="form-label">First name</label>
             <input required type="text" class="form-control" id="firstName" placeholder="Enter First name " name="firstName">
@@ -46,6 +46,15 @@
             <input required type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
+        
+        </br>
+        <div class="custom-file">
+            <input type="file" accept="image/*" class="custom-file-input" id="avatar"  name="avatar">        
+            <label class="custom-file-label" for="avatar"></label>                
+            <div id="avatar" class="form-text text-danger">File Upload is Optional</div>
+
+        </div>
+        </br>
 
 
          
