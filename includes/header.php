@@ -29,7 +29,7 @@ include_once 'includes/sessions.php';
     </button>
     <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only"></span></a>
         <a class="nav-item nav-link" href="viewallpeople.php">Registred people</a>
       
       </div>
@@ -39,15 +39,15 @@ include_once 'includes/sessions.php';
             {
 
         ?>
-        <a class="nav-item nav-link " href="login.php">Login <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link " href="login.php">Login <span class="sr-only"></span></a>
 
         <?php 
             }
             else{
         ?> 
-        <a class="nav-item nav-link " href="#"><span> Hellooo Hello <?php echo $_SESSION['username'] ?>! </span> (currently)</a>  
+        <a class="nav-item nav-link " href="#"><span> Hellooo Hello <?php echo $_SESSION['username'] ?>! </span> </a>  
         <!-- ovde mozda umesto hello helloo da stavis korisnikovu sliku ili tako nesto  -->
-        <a class="nav-item nav-link " href="logout.php">Logout <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link " href="logout.php">Logout <span class="sr-only"></span></a>
         <?php } ?>
       </div>
     </div>

@@ -10,15 +10,31 @@
         $password=$_POST['password'];
         $new_password=md5($password.$username);
 
-       $result= $userDB->getUser($username,$new_password);
-       if(!$result)
+       $resultAdmin= $userDB->getUser($username,$new_password);
+       if(!$resultAdmin) //deo za trkace
        {
-           echo '<div class="alert alert-danger"> Username or Password is incorrect! Please try again </div>';
+           $resultRunner=$crudDB->getLogIn($username,$new_password);
+           if( !$resultRunner)
+           {
+                echo '<div class="alert alert-danger"> Username or Password is incorrect! Please try again </div>';
+           }
+           else
+           {
+               
+                $_SESSION['username']=$username;
+                $_SESSION['userid']=$resultRunner['person_id'];
+                $_SESSION['permission']='runner';
+                echo "U delu za trkace u login.php";
+                $runnerID=$resultRunner['person_id'];;
+                header("Location: viewoneperson.php?id=$runnerID");
+           }
+           
        }
-       else
+       else //deo za admine
        {
            $_SESSION['username']=$username;
-           $_SESSION['userid']=$result['id'];
+           $_SESSION['userid']=$resultAdmin['id'];
+           $_SESSION['permission']='admin';
            header("Location: viewallpeople.php");
        }
     }
@@ -42,6 +58,12 @@
         <a href="#"> Forgot Password </a>
 
     </form><br/><br/><br/><br/>
+
+    <a href="signup.php"  class="btn btn-primary">SIGN UP </a>
+
+
+
+    
 
 <?php include_once 'includes/footer.php'?>    
 

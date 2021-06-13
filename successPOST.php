@@ -17,30 +17,57 @@
         $InputPassword= $_POST['InputPassword'];
 
         $orig_file= $_FILES["avatar"]["tmp_name"];
-        $extension=pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
-        $target_dir='uploads/';
-        //$destination= $target_dir . basename($_FILES["avatar"]["name"]); //1 pokusaj, cista slika, ali posto vise osoba moze imati sliku 
-        //koja se zove profile.jpg onda cemo ukljuciti njihove email adresse i oni treba da budu jedinstveni i sad ce se skl==like zvati onako kako 
-        //je njihova email adressa 
-        $destination="$target_dir$email.$extension";
-        //uzimamo iz nase FILES control(u index.php) koja ima name=avatar uzimamo atribut 'name'
-        move_uploaded_file($orig_file,$destination);
-
-        
-
-        $issuccess = $crudDB->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$destination);
-        $specialtyName=$crudDB->getSpecialtyBySpecialtyId($specialty);
-
-        if($issuccess)
+        $destinationAvatar=NULL;
+        if($orig_file) //ako je uneo fajl
         {
-            //echo "<h1 class='text-center text-success'> You Have been Registered! <h1>";
-            include 'includes/successmessage.php';
+            $extension=pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+            $target_dir='uploads/';
+            //$destination= $target_dir . basename($_FILES["avatar"]["name"]); //1 pokusaj, cista slika, ali posto vise osoba moze imati sliku 
+            //koja se zove profile.jpg onda cemo ukljuciti njihove email adresse i oni treba da budu jedinstveni i sad ce se skl==like zvati onako kako 
+            //je njihova email adressa 
+            $destinationAvatar="$target_dir$email.$extension";
+            //uzimamo iz nase FILES control(u index.php) koja ima name=avatar uzimamo atribut 'name'
+            move_uploaded_file($orig_file,$destinationAvatar);
+        }
+
+       
+
+        $availibleUsername=$crudDB->getNumofUsernames($email);
+        
+        if($availibleUsername == false)
+        {
+
+            echo '<div class="alert alert-danger" role="alert">
+            Email address is already regristed.
+         </div>';
+         $issuccess=false;
+           
         }
         else 
         {
-            //echo "<h1 class='text-center text-danger'> There was an error in processing <h1>";
-            include 'includes/errormessage.php';
+           
+            $issuccess = $crudDB->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$destinationAvatar);
+            $specialtyName=$crudDB->getSpecialtyBySpecialtyId($specialty);      
+                
+    
+            if($issuccess)
+            {
+                $insertPass=$crudDB->insertPassword($email,$InputPassword);                  
+                //include 'includes/successmessage.php';
+               echo'
+                <div class="alert alert-success" role="alert" id="successmessage" >
+                    Operation has been complited. Please Log In. 
+                </div>';
+                    
+            }
+            else 
+            {
+                //echo "<h1 class='text-center text-danger'> There was an error in processing <h1>";
+                include 'includes/errormessage.php';
+            }
+
         }
+       
         
     }
 ?>
@@ -48,35 +75,50 @@
 <h1 class="text-center text-success" >
 
 </h1>
+<?php 
+    if($issuccess!=false)
+    { 
+        if(isset($_SESSION['userid']))
+        {
+            //Ovaj kod se ne koristi trenutno (tj uopste se ne poziva)
+?>
+       
+        <img src="<?php echo $destination; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"> 
+                <?php  echo $_POST['firstName'] . ' '. $_POST['lastName'];?>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+            <?php echo $specialtyName['name_specialty'];?>
+            </h6>
+            <p class="card-text">
+            Phone: <?php echo $_POST['phone']; ?>
+            </p>
 
-<img src="<?php echo $destination; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"> 
-        <?php  echo $_POST['firstName'] . ' '. $_POST['lastName'];?>
-    </h5>
-    <h6 class="card-subtitle mb-2 text-muted">
-    <?php echo $specialtyName['name_specialty'];?>
-    </h6>
-    <p class="card-text">
-       Phone: <?php echo $_POST['phone']; ?>
-    </p>
+            <p class="card-text">
+            Date of birth  <?php echo $_POST['dob']; ?>
+            </p>
 
-    <p class="card-text">
-       Date of birth  <?php echo $_POST['dob']; ?>
-    </p>
+            <p class="card-text">
+            Email: <?php echo $_POST['email']; ?>
+            </p>
 
-    <p class="card-text">
-       Email: <?php echo $_POST['email']; ?>
-    </p>
+            <p class="card-text">
+                <?php echo $_POST['InputPassword']; ?>
+            </p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+        </div>
+<?php 
+        }
+        
+    }
 
-    <p class="card-text">
-         <?php echo $_POST['InputPassword']; ?>
-    </p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+
+    
+?>
 
 
 

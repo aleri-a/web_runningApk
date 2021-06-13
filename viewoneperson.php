@@ -21,8 +21,9 @@
         //dole uzimas parametre iz baze 
  // }   Ovu zagradu zatvaramo skroz dole, u suprutnom bi ukoliko je usao u prvo if ispisace poruku korisniku, i onda ce da mu iprikaze gde su greske 
 
-
+ 
 ?>
+
 
 <img src="<?php echo empty($result['avatar_path']) ? "uploads/defaultProfile.png" :$result['avatar_path']; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
 
@@ -54,6 +55,7 @@
 </div>
 
     <br>
+    
     <a href="viewallpeople.php"  class="btn btn-primary">Back to List </a>
     <a href="editoneperson.php?id=<?php echo $result['person_id']  ?>" class="btn btn-warning">Edit </a>
     <a  onclick="return confirm('Are you sure you want to delete this record?');"
