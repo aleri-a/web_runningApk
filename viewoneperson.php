@@ -2,7 +2,7 @@
 //kod njega: view.php (video Viewing Record Details)
     $title= 'View One person at the time ';
     require_once 'includes/header.php';
-    require_once 'includes/auth_check.php'; //da li je ta osoba autorizovana da vidi ovo, ako ne onda dugme i dalje postoji ali ce ga prebaciti na  stranicu za login
+    //require_once 'includes/auth_check.php'; //da li je ta osoba autorizovana da vidi ovo, ako ne onda dugme i dalje postoji ali ce ga prebaciti na  stranicu za login
     require_once 'db/conn.php';
 
     // Get person by id , proveravamo da li je taj parametar setovan tj da li ga ima u URLu
@@ -56,11 +56,26 @@
 
     <br>
     
+
+    <!-- JAVNO tj svi i admin i ulogovani -->
     <a href="viewallpeople.php"  class="btn btn-primary">Back to List </a>
+
+    <!-- ADMIN+ULOGOVANI --> 
+    <?php if(isset($_SESSION['userid'])){?>                          
+    
+
+    <!-- SAMO ADMIN -->
+    <?php  if($_SESSION['permission']=='admin'){                 ?>                        
     <a href="editoneperson.php?id=<?php echo $result['person_id']  ?>" class="btn btn-warning">Edit </a>
     <a  onclick="return confirm('Are you sure you want to delete this record?');"
         href="deleteoneperson.php?id=<?php echo $result['person_id']  ?>" class="btn btn-danger">Delete</a>
 
+    <!-- SAMO ULOGOVANI   (tj da moze samo svoj epodatke da menja ) -->
+    <?php } else if($_SESSION['permission']=='runner' && $_SESSION['userid']==$result['person_id'] ) {?> 
+    <a href="editoneperson.php?id=<?php echo $result['person_id']  ?>" class="btn btn-warning">Edit </a>
+    
+
+    <?php } }?>
 
 
 <?php } ?>

@@ -30,7 +30,7 @@ include_once 'includes/sessions.php';
     <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
         <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only"></span></a>
-        <a class="nav-item nav-link" href="viewallpeople.php">Registred people</a>
+        
       
       </div>
       <div class="navbar-nav ml-auto">
@@ -39,16 +39,42 @@ include_once 'includes/sessions.php';
             {
 
         ?>
+        <!--JAVNO DOSTUPNO   -->
+        <a class="nav-item nav-link " href="viewallpeople.php">Runners</a>
         <a class="nav-item nav-link " href="login.php">Login <span class="sr-only"></span></a>
+        
 
+
+        <!--VIDE i ADMIN + LOGOVANI   -->
         <?php 
             }
-            else{
-        ?> 
-        <a class="nav-item nav-link " href="#"><span> Hellooo Hello <?php echo $_SESSION['username'] ?>! </span> </a>  
-        <!-- ovde mozda umesto hello helloo da stavis korisnikovu sliku ili tako nesto  -->
+            else{ 
+        ?>       
         <a class="nav-item nav-link " href="logout.php">Logout <span class="sr-only"></span></a>
-        <?php } ?>
+
+
+
+        <!--VIDI samo ADMIN   -->   
+        <?php       
+              if( $_SESSION['permission']=='admin'){
+        ?>              
+        <a class="nav-item nav-link " href="#"><span> Hellooo admin <?php echo $_SESSION['username'] ?>! </span> </a>  
+        
+
+        <!-- VIDE ULOGOVANI KORISNICI  -->
+        <?php }
+              else {
+         ?>        
+        <a class="nav-item nav-link " href="#"><span> Hello runner, spreman za trku???<?php echo $_SESSION['username'] ?>! </span> </a> 
+
+
+
+
+         <?php 
+              } //za else2
+            }//za else 1
+         
+         ?>
       </div>
     </div>
 </nav>
