@@ -15,7 +15,7 @@
     else
     {
         $id=$_GET['id'];
-        $person= $teamDB->getOneTeamDetails($id);
+        $team= $teamDB->getOneTeamDetails($id);
    
 ?>
 
@@ -23,11 +23,11 @@
     <h1 class="text-center">Edit Team</h1>
 
    <form method="post" action="editteamPOST.php">
-        <input type="hidden" name="team_id" value="<?php echo $person['team_id'] ?>"   />
+        <input type="hidden" name="team_id" value="<?php echo $team['team_id'] ?>"   />
 
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" value="<?php echo $person['name'] ?>"  name="name">
+            <input type="text" class="form-control" id="name" value="<?php echo $team['name'] ?>"  name="name">
         </div>
 
 
@@ -36,7 +36,8 @@
             <select   class="form-control"  id="perentTeam" name="perentTeam" >
                 <option label=" "></option>
                 <?php while($rs = $resultsTeams->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <option value="<?php echo $rs['team_id']?>"><?php echo $rs['name']?></option>  
+                    <option value="<?php echo $rs['team_id']?>" <?php if($rs['team_id'] == $team['parentteam_id']) echo 'selected'?>>
+                    <?php echo $rs['name']?></option>  
 
                 <?php }?>        
             </select>
