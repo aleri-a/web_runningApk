@@ -36,8 +36,10 @@
 
     require_once 'crud.php';
     require_once 'user.php';
+    require_once 'team.php';
     $crudDB = new crud($pdo); // instance of mine class, so that i can use functions whenever i want in Index
     $userDB = new user($pdo);
+    $teamDB = new team($pdo);
 
 
     $userDB->insertUser("admin","password");

@@ -1,0 +1,76 @@
+<?php 
+    $title= 'View all teams';
+    require_once 'includes/header.php';
+    //require_once 'includes/auth_check.php'; 
+    require_once 'db/conn.php';
+
+    $results=$teamDB->getAllTeams();
+?>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Parent team ID</th>
+                <th scope="col"> Parent team Name</th>
+                <th scope="col"> Score</th>
+                <th scope="col">Actions</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <a href="addteam.php"  class="btn btn-primary">Add new team </a>
+            <?php  while($r= $results->fetch(PDO::FETCH_ASSOC))    {     ?>
+                <tr>
+                    <th scope="row"><?php echo $r['team_id']  ?></th>
+                    <td><?php echo $r['name']  ?></td>                                      
+                    <td><?php echo $r['parentteam_id']  ?></td>
+                    <td><?php echo $r['parentname']  ?></td>
+                    <td><?php echo '8 -viewallteams '  ?></td>
+                    <td>
+                        <!-- JAVNO tj svi i admin i ulogovani -->
+                        <a href="viewoneteam.php?teamid=<?php echo $r['team_id']  ?>" class="btn btn-primary">View </a>
+                       
+
+
+                        <!-- ADMIN+ULOGOVANI --> 
+                        <?php if(isset($_SESSION['userid'])){?>                          
+                        
+
+                        <!-- SAMO ADMIN -->
+                        <?php  if($_SESSION['permission']=='admin'){                 ?>
+                        <a href="editoneteam.php?id=<?php echo $r['team_id']  ?>" class="btn btn-warning">Edit </a>
+                        <a  onclick="return confirm('Are you sure you want to remove team ? All your data will be lost. ' );"
+                            href="deleteoneteam.php?id=<?php echo $r['team_id']  ?>" class="btn btn-danger">Delete team
+                        </a>
+                        
+                        
+                        
+                        <!-- SAMO ULOGOVANI i sa svojim IDjom(tj mogu da brisu i menjaju smao svoj nalog)-->
+                        <?php } else if($_SESSION['permission']=='runner'   && $_SESSION['userid']==$r['person_id']) {?>
+                        
+                       
+
+
+
+                        <?php } }?>
+                    </td>
+                <tr>
+            <?php }    ?>
+        </tbody>
+    
+    </table>
+
+<?php
+
+?>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+ 
+<?php require_once 'includes/footer.php' ?>

@@ -1,7 +1,8 @@
 <?php
 //This includes session file. This file contains code that starts/rsume a session
 //By having it in the header file, it willl be included on every page, allowing session capility to be used on every pade across website 
-include_once 'includes/sessions.php';
+include_once (__DIR__.'/sessions.php');
+echo __DIR__;
 ?>
 <!doctype html>
 <html lang="en">
@@ -34,14 +35,25 @@ include_once 'includes/sessions.php';
       
       </div>
       <div class="navbar-nav ml-auto">
+
+  
+        <!-- PUBLIC +ADMIN+ RUNNERS -->
+        <a class="nav-item nav-link " href="viewallpeople.php">Runners</a>
+        <a class="nav-item nav-link " href="viewallteams.php">Teams <span class="sr-only"></span></a>
+       
+
         <?php 
             if(!isset($_SESSION['userid']))
             {
 
         ?>
-        <!--JAVNO DOSTUPNO   -->
-        <a class="nav-item nav-link " href="viewallpeople.php">Runners</a>
+        <!--SAMO ZA JAVNOST   -->
         <a class="nav-item nav-link " href="login.php">Login <span class="sr-only"></span></a>
+        
+
+        
+        
+
         
 
 
