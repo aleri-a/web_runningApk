@@ -69,11 +69,15 @@
     <a href="editoneperson.php?id=<?php echo $result['person_id']  ?>" class="btn btn-warning">Edit </a>
     <a  onclick="return confirm('Are you sure you want to delete this record?');"
         href="deleteoneperson.php?id=<?php echo $result['person_id']  ?>" class="btn btn-danger">Delete</a>
+    <a href="addmemberinteam.php?id=<?php echo $result['person_id']  ?>?idTeam=<?php echo $result['team_id']  ?>"
+        class="btn btn-info">Add/Change team </a>
+
 
     <!-- SAMO ULOGOVANI   (tj da moze samo svoj epodatke da menja ) -->
     <?php } else if($_SESSION['permission']=='runner' && $_SESSION['userid']==$result['person_id'] ) {?> 
     <a href="editoneperson.php?id=<?php echo $result['person_id']  ?>" class="btn btn-warning">Edit </a>
-    
+    <a href="addmemberinteam.php?id=<?php echo $result['person_id']  ?>?idTeam=<?php echo $result['team_id']  ?>"
+        class="btn btn-info">Add/Change team </a>
 
     <?php } }?>
 

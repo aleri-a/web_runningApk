@@ -48,7 +48,7 @@
                         
                         
                         <!-- SAMO ULOGOVANI i sa svojim IDjom(tj mogu da brisu i menjaju smao svoj nalog)-->
-                        <?php } else if($_SESSION['permission']=='runner'   && $_SESSION['userid']==$r['person_id']) {?>
+                        <?php } else if($_SESSION['permission']=='runner'   && $_SESSION['userid']) {?>
                         
                        
 

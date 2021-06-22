@@ -4,6 +4,12 @@
     require_once 'db/conn.php';
 
     $resultsSpecialties=$crudDB->getSpecialties();
+
+    if(isset($_SESSION['userid']))
+    {
+    echo "TVOJ userid SESSION:    ".$_SESSION['userid'];        
+    } 
+
 ?>
 
 

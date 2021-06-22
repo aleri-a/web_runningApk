@@ -15,7 +15,7 @@
     else
     {        
         $id=$_GET['teamid'];
-        echo $id;
+        
         $result=$teamDB->getOneTeamDetails($id); 
         $childrenTeams=$teamDB->getChildTeams($id);
         
@@ -38,7 +38,7 @@
         </p>
         <p class="card-text">
             Parent team name: 
-                    <a href="viewoneteam.php?teamid=<?php echo $result['parentteam_id']  ?>" class="btn btn-primary">
+                    <a href="viewoneteam.php?teamid=<?php echo $result['parentteam_id']  ?>" class="btn btn-link">
                         <?php echo $result['parentname']; ?>
                     </a>
         </p>
@@ -50,7 +50,7 @@
                      Childe teams : 
                      <br>
                         <?php foreach( $childrenTeams as $ch ){ ?>
-                            <a href="viewoneteam.php?teamid=<?php echo $ch['team_id']  ?>" class="btn btn-primary">
+                            <a href="viewoneteam.php?teamid=<?php echo $ch['team_id']  ?>" class="btn btn-link">
                                 <?php echo $ch['name']; ?>
                             </a>
                             <br>               
@@ -88,7 +88,7 @@
 
 
     <!-- SAMO ULOGOVANI   -->
-    <?php } else if($_SESSION['permission']=='runner' && $_SESSION['userid']==$resultPerson['person_id'] ) {?> 
+    <?php } else if($_SESSION['permission']=='runner' && isset($_SESSION['userid'] )) {?> 
    
 
 

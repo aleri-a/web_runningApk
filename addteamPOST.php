@@ -12,8 +12,9 @@
         
     }
     $canGo=$teamDB->getNumofTeams($teamName);
+    
 
-    if($canGo==0)
+    if($canGo['num']==0)
     {
         $issuccess = $teamDB->insertTeam( $teamName,$parentTeam);
         if($issuccess)

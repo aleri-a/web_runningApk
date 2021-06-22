@@ -155,6 +155,26 @@ class crud
 
 
 
+    public function updateTeam($idPerson,$idTeam){
+        try{
+            $sql="update persons set team_id=:idTeam  where person_id=:idPerson";
+            $stmt=$this->db->prepare($sql);
+            $stmt->bindparam(':idPerson',$idPerson);
+            $stmt->bindparam(':idTeam',$idTeam);
+
+            $stmt->execute();
+            return true;
+        }
+        catch (PDOException $e)
+        {
+            echo '   usao u catch updateTeam ';
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
+
     public function getAllPeopleDB(){
         try
         {
@@ -170,6 +190,27 @@ class crud
         }       
 
     }
+
+
+    public function getAllPeopleNew(){
+        try
+        {
+            //$sql= "SELECT p.*,t.name as teamname FROM persons p left join team t on p.team_id=t.team_id";
+            $sql2="SELECT per.*,t.name as teamname FROM persons per left join team t on per.team_id=t.team_id";
+            $result= $this->db->query($sql2);
+            return $result;
+        }
+        catch (PDOException $e)
+        {
+            echo '   usao u catch getAllPeopleNew ';
+            echo $e->getMessage();
+            return false;
+        }       
+
+    }
+
+
+    
 
 
     public function getSpecialties()
@@ -215,6 +256,28 @@ class crud
         try
         {
             $sql=  "SELECT * FROM `persons` a inner join specialties s on a.speciality_id = s.specialty_id where person_id= :id";
+            $stmt= $this->db->prepare($sql);
+            $stmt-> bindparam (':id',$id); //tj bind parametar koji smo naveli u ovom $sql 
+            $stmt->execute();
+            $result=$stmt->fetch();
+            return $result;
+            //Ako vracas sve kolone iz baze onda samo execute() je okej, ali ako vracas samo jedan row onda moras fetch()
+        }
+        catch (PDOException $e)
+        {
+            echo '   usao u catch delete ';
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
+    
+    public function getOnePersonDetailsNew($id)
+    {
+        try  
+        {
+            $sql=  "SELECT per.*,t.name as teamname FROM persons per left join team t on per.team_id=t.team_id where person_id= :id";
             $stmt= $this->db->prepare($sql);
             $stmt-> bindparam (':id',$id); //tj bind parametar koji smo naveli u ovom $sql 
             $stmt->execute();
