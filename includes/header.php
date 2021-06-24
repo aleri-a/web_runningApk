@@ -18,7 +18,7 @@ echo __DIR__;
 
     <link rel="stylesheet" href="css/site.css" />
 
-    <title>Attendace - <?php echo $title?></title>
+    <title>Running apk - <?php echo $title?></title>
   </head>
   <body>
 
@@ -40,6 +40,8 @@ echo __DIR__;
         <!-- PUBLIC +ADMIN+ RUNNERS -->
         <a class="nav-item nav-link " href="viewallpeople.php">Runners</a>
         <a class="nav-item nav-link " href="viewallteams.php">Teams <span class="sr-only"></span></a>
+
+        <a class="nav-item nav-link " href="viewallct.php">Competitions <span class="sr-only"></span></a>
        
 
         <?php 

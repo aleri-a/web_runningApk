@@ -72,53 +72,6 @@
     }
 ?>
 
-<h1 class="text-center text-success" >
-
-</h1>
-<?php 
-    if($issuccess!=false)
-    { 
-        if(isset($_SESSION['userid']))
-        {
-            //Ovaj kod se ne koristi trenutno (tj uopste se ne poziva)
-?>
-       
-        <img src="<?php echo $destination; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title"> 
-                <?php  echo $_POST['firstName'] . ' '. $_POST['lastName'];?>
-            </h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-            <?php echo $specialtyName['name_specialty'];?>
-            </h6>
-            <p class="card-text">
-            Phone: <?php echo $_POST['phone']; ?>
-            </p>
-
-            <p class="card-text">
-            Date of birth  <?php echo $_POST['dob']; ?>
-            </p>
-
-            <p class="card-text">
-            Email: <?php echo $_POST['email']; ?>
-            </p>
-
-            <p class="card-text">
-                <?php echo $_POST['InputPassword']; ?>
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-        </div>
-<?php 
-        }
-        
-    }
-
-
-    
-?>
 
 
 

@@ -24,6 +24,39 @@
           }
         );
     } );
+
+    
+
+    $( function() {
+        $( "#endDt" ).datepicker(
+          {
+            changeMonth: true,
+            changeYear: true,
+            yearRange:"-0:+0",
+            minDate: 0,
+            dateFormat: "yy-mm-dd"
+            
+          }
+        );
+    } );
+
+
+
+    $( function() {
+        $( "#startDt" ).datepicker(
+          {
+            changeMonth: true,
+            changeYear: true,
+            yearRange:"-0:+0",
+            minDate: 0,
+            dateFormat: "yy-mm-dd"
+            
+          }
+        );
+    } );
+
+
+    
     </script>
 
 

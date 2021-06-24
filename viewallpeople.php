@@ -9,6 +9,11 @@
     $results=$crudDB->getAllPeopleNew();
 ?>
 
+    <?php  if(isset($_SESSION['userid']) && $_SESSION['permission']=='admin'){                 ?>
+                <a href="signup.php"  class="btn btn-primary">Add new runner </a>
+    <?php }else { ?>
+        <a href="login.php"  class="btn btn-primary">Log in/ Create account </a>
+    <?php } ?>
     <table class="table">
         <thead>
             <tr>
