@@ -48,6 +48,11 @@
        Results calculated by : <?php echo $result['numbest']; ?> best in the team
     </p>
 
+    
+    <p class="card-text">
+       Type of the competition : <?php echo $result['typename']; ?> 
+    </p>
+
    
 
     

@@ -15,9 +15,12 @@
         $numBest= $_POST['numBest'];
         $distance= $_POST['distance'];
         $adminId=$_SESSION['userid'];
+        $typect=$_POST['typect'];
         //$adminId=2; //PROMENI NA KRAJU 
+        
 
-        $issuccess = $ctDB->insertCt( $competitionName,$startDt,$endDt,$numPerTeam,$numBest,$distance,$adminId);
+
+        $issuccess = $ctDB->insertCt( $competitionName,$startDt,$endDt,$numPerTeam,$numBest,$distance,$adminId,$typect);
 
         if($issuccess)
         {

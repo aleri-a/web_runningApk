@@ -3,7 +3,7 @@
     require_once 'includes/header.php';
     require_once 'db/conn.php';
 
-    $resultsSpecialties=$crudDB->getSpecialties();
+    $resultTypeCt=$ctDB->getTypeCt();
 ?>
 
 
@@ -42,6 +42,18 @@
         <div class="mb-3">
             <label for="numBest" class="form-label">Result calculate based on best</label>
             <input required type="number" class="form-control" id="numBest"  name="numBest" min="1">
+        </div>
+
+        <div class="mb-3">
+            <label for="typect" class="form-label">Type of competition</label>
+            <select   class="form-control"  id="typect" name="typect" required>
+                <option label=" "></option>
+                <?php while($rs = $resultTypeCt->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <option value="<?php echo $rs['id']?>"><?php echo $rs['type_name']?></option>  
+
+                <?php }?>
+
+            </select>
         </div>
 
 

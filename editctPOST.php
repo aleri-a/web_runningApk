@@ -1,5 +1,6 @@
 <?php 
     //ova stranica se ne prikazuje sluzi samo da redirektuje, pa zato nema header i futer deo
+    require_once 'includes/header.php';
     require_once 'db/conn.php';
 
 //Get values from post operation from page editoneteam.php
@@ -12,10 +13,12 @@ if(isset($_POST['changeCt']))
         $numPerTeam= $_POST['numPeopleTeam'];        
         $numBest= $_POST['numBest'];
         $distance= $_POST['distance'];
-        $adminId=$_SESSION['userid'];
-        //$adminId=2; //PROMENI NA KRAJU tj otkomentarisi
+        $adminid=$_SESSION['userid'];
+        $typect=$_POST['typect'];
+       
+        
 
-        $issuccess = $ctDB->updateOneCt( $id,$competitionName,$startDt,$endDt,$numPerTeam,$numBest,$distance,$adminId);
+        $issuccess = $ctDB->updateOneCt( $id,$competitionName,$startDt,$endDt,$numPerTeam,$numBest,$distance,$adminid,$typect);
                                
 
         if($issuccess)
