@@ -2,7 +2,7 @@
 //This includes session file. This file contains code that starts/rsume a session
 //By having it in the header file, it willl be included on every page, allowing session capility to be used on every pade across website 
 include_once (__DIR__.'/sessions.php');
-echo __DIR__;
+
 ?>
 <!doctype html>
 <html lang="en">

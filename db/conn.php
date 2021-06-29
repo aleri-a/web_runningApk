@@ -38,10 +38,12 @@
     require_once 'user.php';
     require_once 'team.php';
     require_once 'competition.php';
+    require_once 'participation.php';
     $crudDB = new crud($pdo); // instance of mine class, so that i can use functions whenever i want in Index
     $userDB = new user($pdo);
     $teamDB = new team($pdo);
     $ctDB = new competition($pdo);
+    $ptDB = new participation($pdo);
 
 
     $userDB->insertUser("admin","password");

@@ -52,6 +52,7 @@
                         <!-- SAMO ADMIN -->
                         <?php  if($_SESSION['permission']=='admin'){                 ?>
                         <a href="editonect.php?id=<?php echo $r['id']  ?>" class="btn btn-warning">Edit </a>
+                        <a href="addpt.php?id=<?php echo $r['id']  ?>" class="btn btn-warning">Add participants </a>
                         <a  onclick="return confirm('Are you sure you want to remove competition ? All  data will be lost. ' );"
                             href="deleteonect.php?id=<?php echo $r['id']  ?>" class="btn btn-danger">Delete team
                         </a>

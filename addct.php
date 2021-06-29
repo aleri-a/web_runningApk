@@ -55,11 +55,14 @@
 
             </select>
         </div>
+<!-- 
+        <div>
+            <table class="table" id='tabelaIzborUcesnika'></table>
+        </div> -->
 
 
-
-
-
+        
+        <!-- <script src="scripts/funkcijeTypeCt.js" type="module"></script> -->
         <br>
         <br>
         <button type="submitCt" name="submitCt" class="btn btn-primary">Submit</button>    

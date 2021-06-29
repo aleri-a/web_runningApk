@@ -106,8 +106,8 @@
                 $sql=  "SELECT * from team where parentteam_id=:idParent "; 
                 $stmt= $this->db->prepare($sql);
                 $stmt-> bindparam (':idParent',$idParent); 
-                $result=$stmt->execute();
-                $result=$stmt->fetchAll();
+                $stmt->execute();
+                $result=$stmt->fetchAll();              
                 
                 return $result;
               
@@ -244,6 +244,25 @@
             return false;
         }
 
+    }
+
+
+
+    public function getParentTeams()
+    {
+        try
+        {
+           
+            $sql= "select * from team where parentteam_id is null";            
+            $result= $this->db->query($sql);
+            return $result;
+        }
+        catch (PDOException $e)
+        {
+            echo '   usao u catch getAllTeams ';
+            echo $e->getMessage();
+            return false;
+        }       
     }
 
      
