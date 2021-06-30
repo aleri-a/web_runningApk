@@ -314,6 +314,27 @@ class crud
 
     }
 
+    public function getPeopleFromTeam($teamId)
+    {
+        
+        try
+        {
+            $sql=  "SELECT * FROM `persons` where team_id= :teamId";
+            $stmt= $this->db->prepare($sql);
+            $stmt-> bindparam (':teamId',$teamId); //tj bind parametar koji smo naveli u ovom $sql 
+            $stmt->execute();
+            $result=$stmt->fetchAll();
+            return $result;
+            //Ako vracas sve kolone iz baze onda samo execute() je okej, ali ako vracas samo jedan row onda moras fetch()
+        }
+        catch (PDOException $e)
+        {
+            echo '   usao u catch getPeopleFromTeam in crud.php     ';
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
 
 
 

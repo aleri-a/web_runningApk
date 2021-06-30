@@ -99,7 +99,7 @@
             }
         }
 
-        public function getChildTeams($idParent)
+        public function getChildTeams($idParent) //direct child
         {
             try
             {
@@ -265,7 +265,20 @@
         }       
     }
 
-     
+     public function getChildrenAndGranchildren($rootId) //dobijem niz Idjijeva koji spadaju pod neki tim a->b->c->d (ako ubacim a dobicu sve ispod njega i njega )
+    {
+       // echo'usao u grandchldren, res:   ';
+        $res=array();
+        array_push($res,$rootId);
+        //print_r($res);
+        $kids=$this->getChildTeams($rootId);
+        foreach($kids as $kid)
+        {
+            $grCh=$this->getChildrenAndGranchildren($kid['team_id']);
+            $res=array_merge($res,$grCh);
+        }
+        return $res;
+    }
 
 
         

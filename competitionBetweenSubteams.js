@@ -4,7 +4,7 @@ console.log("uso u js");
 const parentTeam=document.getElementById("perentTeamOfSubteams");
 const chldrenTeamsdiv=document.getElementById("chldrenTeamscxb");
 const competitionID=document.getElementById("participationCompetitionID").value;
-//console.log("ctID  ",competitionID.value);
+console.log("ctID  ",parentTeam);
 var registredPt=Array();
 
     parentTeam.onclick=(ev)=>ListenerChoosenParent(ev);
@@ -43,7 +43,7 @@ function ListenerChoosenParent(ev)
                 throw Error(res.status);
             return res.json();
         })
-        .then(res=>registredPt=res) //ovde navodis kako ti je zapravo u bazi napisano name, id i sta sve treba od parametara
+        .then(res=>registredPt=res)
         .catch(err=>console.log(err));
         console.log("registred");
         console.log(registredPt);
@@ -55,13 +55,14 @@ function ListenerChoosenParent(ev)
                 throw Error(res.status);
             return res.json();
         })
-        .then(childTeams=>showChildTeams(childTeams)) //ovde navodis kako ti je zapravo u bazi napisano name, id i sta sve treba od parametara
+        .then(childTeams=>showChildTeams(childTeams)) 
         .catch(err=>console.log(err));
 }
 
 function showChildTeams(children)
 {
     chldrenTeamsdiv.innerHTML='';
+    console.log("children    ddddd   ",children);
     children.forEach(ch => {
         //chldrenTeamsdiv
         //console.log(ch);

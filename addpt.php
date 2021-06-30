@@ -20,9 +20,10 @@
 ?>
 
 
-<h1 class="text-center">Add participants in the competition: <?php  echo $ctDetails['name'] ;?> </h1>
-<h3 class="text-left">Type of competition: <?php  echo $ctDetails['typename'] ;?> </h1>
-
+<h1 class="text-center">Add participants in the competition </h1>
+<h2 class="text-center" id="addPt_nameCompetition"> <?php  echo $ctDetails['name'] ;?> </h1>
+<div id='addPtDIVispodNaslova'>
+<h5 class="text-left" id="addPt_typeCompetition">Type of competition: <?php  echo $ctDetails['typename'] ;?> </h1>
 <form method="post" action="addptPOST.php" enctype="multipart/form-data">
 <input type="hidden" name="competition_id" id="participationCompetitionID"value="<?php echo $ctDetails['id'] ?>"   />
 
@@ -30,10 +31,12 @@
 <!-------------------------------------------------- TAKMICENJE IZMEDJU TIMOVA  -------------------------------------------->
 <?php
     if($ctDetails['typect_id']==1) 
-    {      
+    {   
+        echo "<div id='addptSamoTimoviCXB'>";   
         foreach( $teamsParents as $tp )
         {      
 ?>
+
             <input type="hidden" id="cxbteamsOnlyAll" name="cxbteamsOnlyAll[]"  value="<?php echo $tp['team_id']?>">
             <div class="form-check">
             <input
@@ -52,9 +55,11 @@
                 <?php echo $tp['name']?>
             </label>
             </div>
+                
 <?php
 
         } //ctDetails=1, endForeach
+        echo "</div>";
 
     }
     // -------------------------------------------------BETWEEN SUBTEAMS-------------------------------------------
@@ -62,7 +67,7 @@
     {
         ?>
         <div class="mb-3">
-        <label for="specialty" class="form-label">Subteams of the team:</label>
+        <label for="perentTeamOfSubteams" class="form-label">Subteams of the team:</label>
         <select   class="form-control"  id="perentTeamOfSubteams" name="perentTeamOfSubteams" >
             <option label=" "></option>
             <?php foreach( $teamsParents as $tp ) { ?>
@@ -93,7 +98,22 @@
     // -----------------------------------------------BETWEEN PEOPLE OF ONE TEAM ------------------------------------------------
     else if($ctDetails['typect_id']==3) 
     {
+        ?>
+        <div class="mb-3">
+        <label for="teamOfPeople" class="form-label">Competition for the people from the team:</label>
+        <select   class="form-control"  id="teamOfPeople" name="teamOfPeople" >
+            <option label=" "></option>
+            <?php foreach( $teamsParents as $tp ) { ?>
+                <option value="<?php echo $tp['team_id']?>"><?php echo $tp['name']?></option>  
 
+            <?php }?>          
+        </select>
+
+
+        <div id='peopleDivcxb'>
+        </div>        
+        <script src="competitionBetweenPeople.js"></script>
+<?php
     }
 
 
@@ -110,7 +130,7 @@
     <button  name="submitCt" class="btn btn-primary">Save </button>    
  </form>
 
-
+</div>
 
 <?php } ?>
 <br>
