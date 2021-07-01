@@ -10,7 +10,7 @@ class crud
         $this->db = $conn;
     }
 
-    public function insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$avatar_path){
+    public function insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$avatar_path,$sex){
         try {
 
             $numUsers=$this->getNumofUsernames($email);
@@ -20,8 +20,8 @@ class crud
             }
             else
             {
-                $sql = "INSERT INTO `persons`(firstname, lastname, dateofbirth, emailaddress, contactnumber, speciality_id,avatar_path) 
-                VALUES (:fname,:lname,:dob,:email,:contact,:specialty,:avatar_path)";
+                $sql = "INSERT INTO `persons`(firstname, lastname, dateofbirth, emailaddress, contactnumber, speciality_id,avatar_path,sex) 
+                VALUES (:fname,:lname,:dob,:email,:contact,:specialty,:avatar_path,:sex)";
                 //we need to write on this way because ado it requers in order to dont get sql injectyions ie to dont be possible 
                 $stmt = $this->db->prepare($sql);
 
@@ -32,6 +32,7 @@ class crud
                 $stmt->bindparam(':contact',$contact);
                 $stmt->bindparam(':specialty',$specialty);
                 $stmt->bindparam(':avatar_path',$avatar_path);
+                $stmt->bindparam(':sex',$sex);
 
                 $stmt->execute();
                 return true;
@@ -130,9 +131,10 @@ class crud
        
     
 
-    public function editOnePerson($id,$fname,$lname,$dob,$email,$contact,$specialty){
+    public function editOnePerson($id,$fname,$lname,$dob,$email,$contact,$specialty,$sex){
         try{
-            $sql="update persons set lastname=:lname, firstname=:fname,dateofbirth=:dob, emailaddress=:email,contactnumber=:contact, speciality_id=:specialty where person_id=:id";
+           
+            $sql="update persons set lastname=:lname, firstname=:fname,dateofbirth=:dob, emailaddress=:email,contactnumber=:contact, speciality_id=:specialty, sex=:sex where person_id=:id";
             $stmt=$this->db->prepare($sql);
             $stmt->bindparam(':id',$id);
             $stmt->bindparam(':fname',$fname);
@@ -141,13 +143,14 @@ class crud
             $stmt->bindparam(':contact',$contact);
             $stmt->bindparam(':email',$email);
             $stmt->bindparam(':specialty',$specialty);
+            $stmt->bindparam(':sex',$sex);
 
             $stmt->execute();
             return true;
         }
         catch (PDOException $e)
         {
-            echo '   usao u catch delete ';
+            echo '   usao u catch editOnePerson ';
             echo $e->getMessage();
             return false;
         }

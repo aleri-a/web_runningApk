@@ -12,10 +12,11 @@ if(isset($_POST['change']))
     $contact= $_POST['phone'];
     $dob= $_POST['dob'];
     $email= $_POST['email'];
+    $sex= $_POST['sex'];
     
     //call Crud function
     
-    $res=$crudDB->editOnePerson($id,$fname,$lname,$dob,$email,$contact,$specialty);
+    $res=$crudDB->editOnePerson($id,$fname,$lname,$dob,$email,$contact,$specialty,$sex);
     //Redirect to index.php 
     if($res)
     {

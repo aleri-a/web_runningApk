@@ -15,6 +15,7 @@
         $dob= $_POST['dob'];
         $email= $_POST['email'];
         $InputPassword= $_POST['InputPassword'];
+        $sex= $_POST['sex'];
 
         $orig_file= $_FILES["avatar"]["tmp_name"];
         $destinationAvatar=NULL;
@@ -46,7 +47,7 @@
         else 
         {
            
-            $issuccess = $crudDB->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$destinationAvatar);
+            $issuccess = $crudDB->insertPersonDB($fname, $lname, $dob, $email, $contact, $specialty,$destinationAvatar,$sex);
             $specialtyName=$crudDB->getSpecialtyBySpecialtyId($specialty);      
                 
     

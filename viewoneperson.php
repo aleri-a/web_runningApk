@@ -32,15 +32,25 @@
     <h5 class="card-title"> 
         <?php  echo $result['firstname'] . ' '. $result['lastname'];?>
     </h5>
+
     <h6 class="card-subtitle mb-2 text-muted">
     <?php echo $result['name_specialty'];?> 
     </h6>
-    <p class="card-text">
-       Phone: <?php echo $result['contactnumber']; ?>
-    </p>
+
+
 
     <p class="card-text">
        Date of birth  <?php echo $result['dateofbirth']; ?>
+    </p>
+
+    <p class="card-text">
+       Sex: <?php echo $result['sex']; ?>
+    </p>
+
+
+   
+    <p class="card-text">
+       Phone: <?php echo $result['contactnumber']; ?>
     </p>
 
     <p class="card-text">

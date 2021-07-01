@@ -39,10 +39,22 @@
             <label for="dob" class="form-label">Date of birth</label>
             <input type="text" class="form-control" id="dob"  value="<?php echo $person['dateofbirth'] ?>" name="dob" >
         </div>
+
+        <div class="mb-3">
+            <label for="sex" class="form-label">Sex</label>
+            <select  class="form-control"  id="sex" name="sex" required>
+                <option label=" "></option>                
+                    <option value="F" <?php if( $person['sex']== 'F') echo 'selected' ?>>Female</option>
+                    <option value="M" <?php if( $person['sex']== 'M') echo 'selected' ?>>Male</option>                 
+
+            </select>
+        </div>
+
+
         <div class="mb-3">
             <label for="specialty" class="form-label">Area of experties</label>
             <select class="form-select" aria-label="Default select example" id="specialty" name="specialty" >
-               
+            <option label=" "></option>   
                 <?php while($rs = $resultsSpecialties->fetch(PDO::FETCH_ASSOC)) { ?>
                     <option  value="<?php echo $rs['specialty_id']?>" <?php if($rs['specialty_id'] == $person['specialty_id']) echo 'selected' ?>>
                          <?php echo $rs['name_specialty']; ?>

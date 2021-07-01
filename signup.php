@@ -23,17 +23,34 @@
             <label for="dob" class="form-label">Date of birth</label>
             <input required type="text" class="form-control" id="dob" name="dob" >
         </div>
+
+        
+
         <div class="mb-3">
-            <label for="specialty" class="form-label">Area of experties</label>
+            <label for="sex" class="form-label">Sex</label>
+            <select  class="form-control"  id="sex" name="sex" required>
+                <option label=" "></option>                
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>                 
+
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="specialty" class="form-label">Expiriance</label>
             <select   class="form-control"  id="specialty" name="specialty" required>
-                <option label=" "></option>
+            <option label=" "></option>       
                 <?php while($rs = $resultsSpecialties->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <option value="<?php echo $rs['specialty_id']?>"><?php echo $rs['name_specialty']?></option>  
+                    <option value="<?php  echo $rs['specialty_id']?>"><?php echo $rs['name_specialty']?></option>  
 
                 <?php }?>
 
             </select>
         </div>
+
+
+
 
         <div class="mb-3">
             <label for="phone" class="form-label">Phone number</label>
