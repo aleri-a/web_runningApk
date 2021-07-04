@@ -133,7 +133,7 @@
 
         }
 
-        public function getPeopleforCtsql($competitionid,$teamId)
+        public function getPeopleforCtsql($competitionid,$teamId) //for competition between people of one team 
         {
             try
             {
@@ -182,6 +182,86 @@
                 return false;
             }
         }
+
+
+        public function getPtforMoreTeams($parentTeams) //first i get all teams  where the person belongs, and now i am cheking those teams for which competition they are  and i get every competition where he was participationg (as part of team, or subteam, or alone)
+        {
+            
+            try
+            {
+               // $registredteams=$this->getAllPtFromListOfTeams($parentTeams);
+                //team-:>getChildrenAndGranchildren
+                $sql2="SELECT pt.*,ct.name as competitionname ,ct.startdate,ct.enddate,tm.*,tm.name as teamname
+                FROM `participation`  pt  
+                left join competition ct on pt.competition_id=ct.id 
+                left join team tm on pt.team_id=tm.team_id
+                where pt.person_id is null and pt.team_id in ($parentTeams)";
+
+                $stmt= $this->db->prepare($sql2);
+                $stmt->bindparam(':parentTeams',$parentTeams); //dobijem ct gde se takmice ti timovi 
+                
+                $result= $stmt->execute();
+               $result=$stmt->fetchAll();
+                return $result;
+
+               
+            $stmt-> bindparam (':id',$id); //tj bind parametar koji smo naveli u ovom $sql 
+            $stmt->execute();
+            $result=$stmt->fetch();
+            return $result;
+               
+            }
+            catch (PDOException $e)
+            {
+                echo '   usao u catch getAllPeopleNew ';
+                echo $e->getMessage();
+                return false;
+            }       
+            
+
+        }
+
+        
+    public function getIndividualParticipation($personId)
+    {
+        try
+        {
+            echo"U individual participaion $personId";
+           // $sql= "select pt.*, pt.id as ptid,tm.name as teamname from participation pt left join team tm on pt.team_id=tm.team_id where person_id=:personId " ;
+            $sql="SELECT pt.*,ct.name as competitionname ,ct.startdate,ct.enddate,tm.*,tm.name as teamname
+            FROM `participation`  pt  
+            left join competition ct on pt.competition_id=ct.id 
+            left join team tm on pt.team_id=tm.team_id
+            where pt.person_id=:personId";
+           $stmt=$this->db->prepare($sql);
+            $stmt->bindparam(':personId',$personId);
+           
+            $stmt->execute();
+            $result=$stmt->fetchAll();
+           
+            return $result;
+        }
+        catch (PDOException $e)
+        {
+            echo '   usao u catch getIndividualParticipation ';
+            echo $e->getMessage();
+            return false;
+        }     
+
+    }
+
+
+       
+
+
+
+
+
+
+
+
+
+
     }
 
 ?>

@@ -12,6 +12,7 @@
                 <a href="addct.php"  class="btn btn-primary">Add new competition </a>
             <?php } ?>
 
+
     <table class="table">
         <thead>
             <tr>

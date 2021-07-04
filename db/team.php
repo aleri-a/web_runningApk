@@ -248,7 +248,7 @@
 
 
 
-    public function getParentTeams()
+    public function getParentTeams() //all root teams
     {
         try
         {
@@ -280,6 +280,25 @@
         return $res;
     }
 
+
+    public function getAncestorsTeamsOfTeam($leafId) //dobiti sve timove u koje spada tim a->b->c->d        (ie one branch of tree)
+     //                                                                                    |->bb->cc         =>if we are looking ancestors for d we will get c,b,a ie not bb and not cc
+    {
+       // echo"usao u getAncestorsTeamsOfTeam za id:  $leafId   .  \r\n";
+        $res=array();
+        array_push($res,$leafId);
+        $team=$this->getOneTeamDetails($leafId);
+        if($team['parentteam_id']!=NULL)
+        
+        {
+            $grCh=$this->getAncestorsTeamsOfTeam($team['parentteam_id']);
+            $res=array_merge($res,$grCh);
+        }
+        return $res;
+    }
+
+
+    
 
         
 

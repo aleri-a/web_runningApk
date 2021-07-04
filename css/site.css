@@ -37,3 +37,19 @@
     padding-left: 1%;
 
 }
+
+/* RECORDs->addrecord.php */
+
+#time_addrecord{
+    display: flex;
+    flex-direction: row;
+
+}
+
+#hh,#mm,#ss,#lblDveTacke{
+    margin: 1%;
+}
+
+#recordDetails{
+    background-color: azure;
+}

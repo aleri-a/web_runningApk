@@ -43,6 +43,7 @@ include_once (__DIR__.'/sessions.php');
 
         <a class="nav-item nav-link " href="viewallct.php">Competitions <span class="sr-only"></span></a>
        
+       
 
         <?php 
             if(!isset($_SESSION['userid']))
@@ -51,11 +52,6 @@ include_once (__DIR__.'/sessions.php');
         ?>
         <!--SAMO ZA JAVNOST   -->
         <a class="nav-item nav-link " href="login.php">Login <span class="sr-only"></span></a>
-        
-
-        
-        
-
         
 
 
@@ -79,7 +75,9 @@ include_once (__DIR__.'/sessions.php');
         <?php }
               else {
          ?>        
+        <a class="nav-item nav-link " href="addrecord.php">Add record <span class="sr-only"></span></a>
         <a class="nav-item nav-link " href="#"><span> Hello runner, spreman za trku???<?php echo $_SESSION['username'] ?>! </span> </a> 
+
 
 
 

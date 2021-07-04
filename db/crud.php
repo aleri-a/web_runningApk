@@ -178,7 +178,7 @@ class crud
 
 
 
-    public function getAllPeopleDB(){
+    public function getAllPeopleDB(){ //vraca povezano specilaty, and down is another for conecting teams
         try
         {
             $sql= "SELECT * FROM `persons` a inner join specialties s on a.speciality_id = s.specialty_id";
@@ -195,7 +195,7 @@ class crud
     }
 
 
-    public function getAllPeopleNew(){
+    public function getAllPeopleNew(){ //vraca 
         try
         {
             //$sql= "SELECT p.*,t.name as teamname FROM persons p left join team t on p.team_id=t.team_id";

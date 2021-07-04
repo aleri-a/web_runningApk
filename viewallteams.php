@@ -5,6 +5,7 @@
     require_once 'db/conn.php';
 
     $results=$teamDB->getAllTeams();
+
 ?>
 
     <table class="table">
@@ -27,7 +28,23 @@
                     <td><?php echo $r['name']  ?></td>                                      
                     <td><?php echo $r['parentteam_id']  ?></td>
                     <td><?php echo $r['parentname']  ?></td>
-                    <td><?php echo '8 -viewallteams '  ?></td>
+                    <td><?php 
+                        $childTeams=$teamDB->getChildTeams($r['team_id']);
+                        $recordsStatistic=$recordDB->getRecordForTeam($childTeams,$r['team_id']);
+                       // echo"  child teams  ";
+                       // print_r($childTeams);
+                       // echo "   records   ";
+                       // print_r($recordsStatistic);
+   
+                        $totalScore=0;
+                        foreach($recordsStatistic as $rcd)
+                        {
+                            $totalScore+=(float)$rcd['score'];
+                        }
+                        echo $totalScore;
+                    
+                    
+                    ?></td>
                     <td>
                         <!-- JAVNO tj svi i admin i ulogovani -->
                         <a href="viewoneteam.php?teamid=<?php echo $r['team_id']  ?>" class="btn btn-primary">View </a>
