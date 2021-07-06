@@ -28,6 +28,16 @@
 //SELECT pt.*,prsn.firstname,prsn.person_id FROM `participation` pt left JOIN persons prsn on pt.team_id=prsn.team_id where pt.person_id is null and pt.team_id in (57,55,53,47)
   
 ?>
+<!--------------------------------------------------------  GETING DATA FROM   -------------------------------------------->
+<?php
+
+
+?>
+
+
+<!-------------------------------------------------------- FORMA FOR INSERT DATA  -------------------------------------------->
+
+
 
 
     <h1 class="text-center">Insert record</h1>
@@ -89,36 +99,52 @@
         <br><br>    
         <p> <h5>Insert data  </h5>
             <br>
+
+
+        <!--<label  class="form-label" > Insert the values from .gpx file </label> 
+         <div class="custom-file">
+            <input type="file" accept=".gpx" class="custom-file-input" id="avatar"  name="avatar">        
+            <label class="custom-file-label" for="avatar"></label>                
+             <div id="avatar" class="form-text text-danger"></div>
+        </div> -->
+
+        <div class="mb-3">
+            <label for="gpxfile" class="form-label"> Insert the values from .gpx file</label>
+            <input class="form-control" type="file" name='gpxfile' id="gpxfile"  accept=".gpx">
+        </div>
+        
+        <br>
+        <br>
         <div id='recordDetails'>
 
 
             <div class="mb-3">
                 <label for="length" class="form-label">Length of the track in km</label>
-                <input required type="number" class="form-control" id="length"  name="length" step="0.001">
+                <input  type="number" class="form-control" id="length"  name="length" step="0.001">
             </div>
 
             <div class="mb-3">
                 <label for="nagib" class="form-label">the slope of the track in meters</label>
-                <input required type="number" class="form-control" id="nagib"  name="nagib" step="0.001" >
+                <input  type="number" class="form-control" id="nagib"  name="nagib" step="0.001" >
             </div>
 
             <label  class="form-label"> Time for passing track </label>
             <div id='time_addrecord' class="form-inline">       
                
                     <div class="form-group" id="hh">
-                        <input required type="number" class="form-control"   placeholder="HH" name="hh">
+                        <input  type="number" class="form-control"   placeholder="HH" name="hh">
                     </div>
                     <div class="form-group" id='lblDveTacke'>   
                         <label  class="form-label" > : </label>  
                     </div>
                     <div class="form-group" id="mm" >   
-                        <input required type="number" class="form-control"  placeholder="MM" name="mm">   
+                        <input  type="number" class="form-control"  placeholder="MM" name="mm">   
                     </div>
                     <div class="form-group" id='lblDveTacke'>   
                         <label  class="form-label" > : </label>  
                     </div>
                     <div class="form-group" id="ss">   
-                        <input required type="number" class="form-control"   placeholder="SS" name="ss" step="0.001">   
+                        <input  type="number" class="form-control"   placeholder="SS" name="ss" step="0.001">   
                     </div>
                 
             </div> <!--id=time_addrecord -->
@@ -129,8 +155,7 @@
 
 
 
-   
-         
+
         <button  name="submitRecord" class="btn btn-primary">Submit</button>    
     </form>
 
