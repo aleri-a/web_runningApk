@@ -29,9 +29,10 @@
         <tbody>
 
            
-            <?php  while($r= $results->fetch(PDO::FETCH_ASSOC))    {     ?>
+            <?php $counter=0; while($r= $results->fetch(PDO::FETCH_ASSOC))    {   $counter+=1;  ?>
                 <tr>
-                    <th scope="row"><?php echo $r['id']  ?></th>
+                    <!-- <th scope="row"><?php echo $r['id']  ?></th> -->
+                    <th><?php echo $counter  ?></th>
                     <td><?php echo $r['name']  ?></td>                                      
                     <td><?php echo $r['startdate']  ?></td>
                     <td><?php echo $r['enddate']  ?></td>
@@ -53,7 +54,7 @@
                         <!-- SAMO ADMIN -->
                         <?php  if($_SESSION['permission']=='admin'){                 ?>
                         <a href="editonect.php?id=<?php echo $r['id']  ?>" class="btn btn-warning">Edit </a>
-                        <a href="addpt.php?id=<?php echo $r['id']  ?>" class="btn btn-warning">Add participants </a>
+                        <a href="addpt.php?id=<?php echo $r['id']  ?>" class="btn btn-info">Add participants </a>
                         <a  onclick="return confirm('Are you sure you want to remove competition ? All  data will be lost. ' );"
                             href="deleteonect.php?id=<?php echo $r['id']  ?>" class="btn btn-danger">Delete team
                         </a>

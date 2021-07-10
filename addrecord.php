@@ -41,11 +41,13 @@
 
 
     <h1 class="text-center">Insert record</h1>
+    <br>
 
    <form method="post" action="addrecordPOST.php" enctype="multipart/form-data">
 
     <div id='radioBtnsaddrecordmy'>
     <p> <h5>Select for participation in which competition you are entering recorods </h5>
+    <br>
             <?php if(!empty($participations)) {?>
             <?php  foreach($participations as $ptt){  ?>            
                 <div class="form-check">
@@ -98,7 +100,9 @@
 <!---------------------------------------------FORMA ZA UNOS RECORDA ------------------------------------------ -->
         <br><br>    
         <p> <h5>Insert data  </h5>
-            <br>
+        <label> Choose one of the way for inserting data </label>
+            <br><br>
+            
 
 
         <!--<label  class="form-label" > Insert the values from .gpx file </label> 
@@ -108,7 +112,7 @@
              <div id="avatar" class="form-text text-danger"></div>
         </div> -->
 
-        <div class="mb-3">
+        <div class="mb-3" id='gpxfileDiv'>
             <label for="gpxfile" class="form-label"> Insert the values from .gpx file</label>
             <input class="form-control" type="file" name='gpxfile' id="gpxfile"  accept=".gpx">
         </div>
@@ -151,11 +155,11 @@
         </div> <!--id=recorddetails -->
          
 
+    <br><br><br>
 
 
 
-
-
+   
         <button  name="submitRecord" class="btn btn-primary">Submit</button>    
     </form>
 

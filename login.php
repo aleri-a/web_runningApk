@@ -41,8 +41,9 @@
 ?>
 
 <h1 class="text-center"><?php echo $title ?> </h1>
+    <br><br><br>
     <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);  ?>" method="post">
-        <table class="table table-sm">
+        <!-- <table class="table table-sm">
             <tr>
                 <td><label for= "username">Username: * </label></td>
                 <td><input type="text" name="username" class="form-control" id="username" value="<?php if($_SERVER['REQUEST_METHOD']== 'POST') echo $_POST['username'];  ?>">
@@ -53,12 +54,29 @@
                 <td><input type="password" name="password" class="form-control" id="password">
                 </td>
             </tr>
-        </table><br/><br/>
+        </table><br/><br/> -->
+
+
+
+        <div class="form-group">
+            <label for="username">Email address</label>
+            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username" value="<?php if($_SERVER['REQUEST_METHOD']== 'POST') echo $_POST['username'];  ?>">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password"  name="password">
+        </div>
+        <br><br>
+
         <input type="submit" value="Login" class="btn btn-primary btn-block"><br/>
-        <a href="#"> Forgot Password </a>
+   
 
-    </form><br/><br/><br/><br/>
+    </form><br/>
 
+
+    <h5>Don't have account yet? </h5>
     <a href="signup.php"  class="btn btn-primary">SIGN UP </a>
 
 

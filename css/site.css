@@ -50,6 +50,29 @@
     margin: 1%;
 }
 
-#recordDetails{
-    background-color: azure;
+#recordDetails,#gpxfileDiv{
+    padding:2%;
+    border:0.5px solid black;
+}
+
+
+
+
+
+#IndexStrana
+{
+  
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    
+    padding-left:5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    /* background-image: url(slika.jpg);
+    background-size: cover;
+    background-attachment: fixed; */
+
+
+
 }

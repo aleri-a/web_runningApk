@@ -24,7 +24,7 @@ include_once (__DIR__.'/sessions.php');
 
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="index.php">Running APK (or logo)</a>
+    <a class="navbar-brand" href="index.php">Running APK </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,7 +45,7 @@ include_once (__DIR__.'/sessions.php');
          
         ?>
         <a class="nav-item nav-link " href="addrecord.php">Add record <span class="sr-only"></span></a>
-        
+
         <?php 
            }
         
@@ -82,7 +82,7 @@ include_once (__DIR__.'/sessions.php');
         <?php       
               if( $_SESSION['permission']=='admin'){
         ?>              
-        <a class="nav-item nav-link " href="#"><span> Hellooo admin <?php echo $_SESSION['username'] ?>! </span> </a>  
+        <a class="nav-item nav-link " href="#"><span> Hello  <?php echo $_SESSION['username'] ?>! </span> </a>  
         
 
         <!-- VIDE ULOGOVANI KORISNICI  -->
@@ -90,7 +90,7 @@ include_once (__DIR__.'/sessions.php');
               else {
          ?>        
        
-        <a class="nav-item nav-link " href="#"><span> Hello runner, spreman za trku???<?php echo $_SESSION['username'] ?>! </span> </a> 
+        <a class="nav-item nav-link " href="#"><span> </span> </a> 
 
 
 

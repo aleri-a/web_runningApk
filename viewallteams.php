@@ -22,9 +22,10 @@
         </thead>
         <tbody>
             <a href="addteam.php"  class="btn btn-primary">Add new team </a>
-            <?php  while($r= $results->fetch(PDO::FETCH_ASSOC))    {     ?>
+            <?php $counter=0; while($r= $results->fetch(PDO::FETCH_ASSOC))    { $counter+=1;    ?>
                 <tr>
-                    <th scope="row"><?php echo $r['team_id']  ?></th>
+                    <!-- <th scope="row"><?php echo $r['team_id']  ?></th> -->
+                    <th><?php echo $counter  ?></th>
                     <td><?php echo $r['name']  ?></td>                                      
                     <td><?php echo $r['parentteam_id']  ?></td>
                     <td><?php echo $r['parentname']  ?></td>

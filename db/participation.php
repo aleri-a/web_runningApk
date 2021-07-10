@@ -226,7 +226,7 @@
     {
         try
         {
-            echo"U individual participaion $personId";
+           
            // $sql= "select pt.*, pt.id as ptid,tm.name as teamname from participation pt left join team tm on pt.team_id=tm.team_id where person_id=:personId " ;
             $sql="SELECT pt.*,ct.name as competitionname ,ct.startdate,ct.enddate,tm.*,tm.name as teamname
             FROM `participation`  pt  

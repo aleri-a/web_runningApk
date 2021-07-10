@@ -26,9 +26,10 @@
             </tr>
         </thead>
         <tbody>
-            <?php  while($r= $results->fetch(PDO::FETCH_ASSOC))    {     ?>
+            <?php $counter=0; while($r= $results->fetch(PDO::FETCH_ASSOC))    {  $counter+=1;   ?>
                 <tr>
-                    <th scope="row"><?php echo $r['person_id']  ?></th>
+                    <!-- <th scope="row"><?php echo $r['person_id']  ?></th> -->
+                    <th><?php echo $counter  ?></th>
                     <td><?php echo $r['firstname']  ?></td>
                     <td><?php echo $r['lastname']  ?></td>                   
                     <td><?php echo 'Runner brisi ovo'  ?></td>

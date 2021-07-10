@@ -30,18 +30,18 @@
 
 
 <img src="<?php echo empty($result['avatar_path']) ? "uploads/defaultProfile.png" :$result['avatar_path']; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
-
-<div class="card" style="width: 18rem;">
+<br><br>
+<div class="card" style="width: 30%;">
   <div class="card-body">
     <h5 class="card-title"> 
         <?php  echo $result['firstname'] . ' '. $result['lastname'];?>
     </h5>
 
     <h6 class="card-subtitle mb-2 text-muted">
-    <?php echo $result['name_specialty'];?> 
+    Expiriance: <?php echo $result['name_specialty'];?> 
     </h6>
     <p class="card-text">
-       Date of birth  <?php echo $result['dateofbirth']; ?>
+       Date of birth: <?php echo $result['dateofbirth']; ?> 
     </p>
     <p class="card-text">
        Sex: <?php echo $result['sex']; ?>
