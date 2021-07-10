@@ -7,7 +7,7 @@
     $personId=$_SESSION['userid'];
     //participation za competition koje se zavrsilo i nije proslo vise od 10 dana 
     $person=$crudDB->getOnePersonDetails($personId);
-    $parentTeams=$teamDB->getAncestorsTeamsOfTeam(57); //$person['team_id']
+    $parentTeams=$teamDB->getAncestorsTeamsOfTeam($person['team_id']); //$person['team_id']
     //$childrenTeams=$teamDB->getChildrenAndGranchildren()
     $strParentTeams='';
    
@@ -18,9 +18,19 @@
             $strParentTeams.=',';
     }
         
+  
     $participations=$ptDB->getPtforMoreTeams($strParentTeams);
+    if($participations==false)
+    {
+        echo "<div class='alert alert-danger' role='alert'>
+        Unfortunately, you are not registered in any team, so you are not allowed to enter any record.
+      </div>";
+    }
+    else{
+
+    
     $individualParticipation=$ptDB->getIndividualParticipation($personId);
-   // print_r($individualParticipation);
+   
 
 
     //print_r($participations);
@@ -174,4 +184,5 @@ insert  taj conn.php -> uspostavljamo konekciju i tamo na kraju imamo pbjekat cr
 <br>
 <br>
  
-<?php require_once 'includes/footer.php' ?>
+<?php } //else in the beginning ie if person is registred in some team 
+require_once 'includes/footer.php' ?>

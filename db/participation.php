@@ -189,26 +189,25 @@
             
             try
             {
-               // $registredteams=$this->getAllPtFromListOfTeams($parentTeams);
-                //team-:>getChildrenAndGranchildren
-                $sql2="SELECT pt.*,ct.name as competitionname ,ct.startdate,ct.enddate,tm.*,tm.name as teamname
-                FROM `participation`  pt  
-                left join competition ct on pt.competition_id=ct.id 
-                left join team tm on pt.team_id=tm.team_id
-                where pt.person_id is null and pt.team_id in ($parentTeams)";
+                if($parentTeams !=NULL)
+                {
+                    // $registredteams=$this->getAllPtFromListOfTeams($parentTeams);
+                    //team-:>getChildrenAndGranchildren
+                    $sql2="SELECT pt.*,ct.name as competitionname ,ct.startdate,ct.enddate,tm.*,tm.name as teamname
+                    FROM `participation`  pt  
+                    left join competition ct on pt.competition_id=ct.id 
+                    left join team tm on pt.team_id=tm.team_id
+                    where pt.person_id is null and pt.team_id in ($parentTeams)";
 
-                $stmt= $this->db->prepare($sql2);
-                $stmt->bindparam(':parentTeams',$parentTeams); //dobijem ct gde se takmice ti timovi 
-                
-                $result= $stmt->execute();
-               $result=$stmt->fetchAll();
-                return $result;
-
+                    $stmt= $this->db->prepare($sql2);
+                    $stmt->bindparam(':parentTeams',$parentTeams); //dobijem ct gde se takmice ti timovi 
+                    
+                    $result= $stmt->execute();
+                    $result=$stmt->fetchAll();
+                    return $result;
+                }
+                else return false;
                
-            $stmt-> bindparam (':id',$id); //tj bind parametar koji smo naveli u ovom $sql 
-            $stmt->execute();
-            $result=$stmt->fetch();
-            return $result;
                
             }
             catch (PDOException $e)
