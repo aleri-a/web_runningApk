@@ -29,20 +29,34 @@ include_once (__DIR__.'/sessions.php');
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
-      <div class="navbar-nav ml-auto">
+      <div class="navbar-nav mr-auto">
         <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only"></span></a>
-        
-      
-      </div>
-      <div class="navbar-nav ml-auto">
 
-  
-        <!-- PUBLIC +ADMIN+ RUNNERS -->
-        <a class="nav-item nav-link " href="viewallpeople.php">Runners</a>
+         <!-- PUBLIC +ADMIN+ RUNNERS -->
+         <a class="nav-item nav-link " href="viewallpeople.php">Runners</a>
         <a class="nav-item nav-link " href="viewallteams.php">Teams <span class="sr-only"></span></a>
 
         <a class="nav-item nav-link " href="viewallct.php">Competitions <span class="sr-only"></span></a>
+
+
+        <?php 
+          if(isset($_SESSION['userid']) && $_SESSION['permission']=='runner'){
+
+         
+        ?>
+        <a class="nav-item nav-link " href="addrecord.php">Add record <span class="sr-only"></span></a>
+        
+        <?php 
+           }
+        
+        ?>
        
+        
+      
+      </div>
+      <div class="navbar-nav mr-auto">
+
+  
        
 
         <?php 
@@ -75,7 +89,7 @@ include_once (__DIR__.'/sessions.php');
         <?php }
               else {
          ?>        
-        <a class="nav-item nav-link " href="addrecord.php">Add record <span class="sr-only"></span></a>
+       
         <a class="nav-item nav-link " href="#"><span> Hello runner, spreman za trku???<?php echo $_SESSION['username'] ?>! </span> </a> 
 
 
