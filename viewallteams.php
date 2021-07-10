@@ -13,8 +13,8 @@
             <tr>
                 <th>#</th>
                 <th scope="col"> Name</th>
-                <th scope="col"> Parent team ID</th>
-                <th scope="col"> Parent team Name</th>
+                <!-- <th scope="col"> Parent team ID</th> -->
+                <th scope="col"> Parent team name</th>
                 <th scope="col"> Score</th>
                 <th scope="col">Actions</th>
                
@@ -36,7 +36,7 @@
                     <!-- <th scope="row"><?php echo $r['team_id']  ?></th> -->
                     <th><?php echo $counter  ?></th>
                     <td><?php echo $r['name']  ?></td>                                      
-                    <td><?php echo $r['parentteam_id']  ?></td>
+                    <!-- <td><?php echo $r['parentteam_id']  ?></td> -->
                     <td><?php echo $r['parentname']  ?></td>
                     <td><?php 
                         $childTeams=$teamDB->getChildTeams($r['team_id']);
