@@ -34,10 +34,11 @@
             if($result['parentteam_id'] != NULL ){
     ?>
         <p class="card-text">
-            Parent team ID: <?php echo $result['parentteam_id']; ?>
+            <!-- Parent team ID: <?php echo $result['parentteam_id']; ?> -->
         </p>
         <p class="card-text">
-            Parent team name: 
+            Parent team: 
+            <br>
                     <a href="viewoneteam.php?teamid=<?php echo $result['parentteam_id']  ?>" class="btn btn-link">
                         <?php echo $result['parentname']; ?>
                     </a>
@@ -47,7 +48,7 @@
             if($childrenTeams != NULL){     ?>
 
                 <p class="card-text">
-                     Childe teams : 
+                     Subteams : 
                      <br>
                         <?php foreach( $childrenTeams as $ch ){ ?>
                             <a href="viewoneteam.php?teamid=<?php echo $ch['team_id']  ?>" class="btn btn-link">
@@ -59,7 +60,7 @@
               
      <?php } }else { ?>
         <p class="card-text">
-           Team doesnt have any subteam and doesnt belong to any other team.
+           Team doesn't have any subteam and doesn't belong to any other team.
         </p>
 
 

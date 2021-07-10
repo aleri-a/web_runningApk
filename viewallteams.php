@@ -14,7 +14,7 @@
                 <th>#</th>
                 <th scope="col"> Name</th>
                 <!-- <th scope="col"> Parent team ID</th> -->
-                <th scope="col"> Parent team name</th>
+                <th scope="col"> Parent team</th>
                 <th scope="col"> Score</th>
                 <th scope="col">Actions</th>
                
