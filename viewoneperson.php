@@ -28,8 +28,8 @@
  
 ?>
 
-
-<img src="<?php echo empty($result['avatar_path']) ? "uploads/defaultProfile.png" :$result['avatar_path']; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
+<br><br>
+<img src="<?php echo empty($result['avatar_path']) ? "uploads/defaultProfile.png" :$result['avatar_path']; ?>" class="rounded" style="width: 30%; height: 30%" />
 <br><br>
 <div class="card" style="width: 30%;">
   <div class="card-body">

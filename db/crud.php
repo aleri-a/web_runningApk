@@ -199,7 +199,9 @@ class crud
         try
         {
             //$sql= "SELECT p.*,t.name as teamname FROM persons p left join team t on p.team_id=t.team_id";
-            $sql2="SELECT per.*,t.name as teamname FROM persons per left join team t on per.team_id=t.team_id";
+            $sql2="SELECT per.*,t.name as teamname,s.name_specialty as specialty FROM persons per 
+            left join team t on per.team_id=t.team_id
+            inner join specialties s on per.speciality_id = s.specialty_id";
             $result= $this->db->query($sql2);
             return $result;
         }

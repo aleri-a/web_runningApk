@@ -11,7 +11,7 @@
             <?php  if(isset($_SESSION['userid']) && $_SESSION['permission']=='admin'){                 ?>
                 <a href="addct.php"  class="btn btn-primary">Add new competition </a>
             <?php } ?>
-
+            <br><br>
 
     <table class="table">
         <thead>
@@ -20,7 +20,7 @@
                 <th scope="col"> Name</th>
                 <th scope="col"> Start date</th>
                 <th scope="col"> End date </th>
-                <th scope="col"> distance</th>
+                <th scope="col"> Distance</th>
                 <!-- <th scope="col"> Max number of people per team</th>
                 <th scope="col">Result calculated by the x best</th> -->
                 <th scope="col">Actions</th>

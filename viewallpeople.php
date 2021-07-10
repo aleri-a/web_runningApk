@@ -14,13 +14,15 @@
     <?php }else if(!isset($_SESSION['userid'])) { ?>
         <a href="login.php"  class="btn btn-primary">Log in/ Create account </a>
     <?php } ?>
+
+    <br><br>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>                
-                <th scope="col">Specilty</th>
+                <th scope="col">Expiriance</th>
                 <th scope="col">Team</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -32,7 +34,7 @@
                     <th><?php echo $counter  ?></th>
                     <td><?php echo $r['firstname']  ?></td>
                     <td><?php echo $r['lastname']  ?></td>                   
-                    <td><?php echo 'Runner brisi ovo'  ?></td>
+                    <td><?php echo $r['specialty'] ?></td>
                     <td><?php echo $r['teamname']  ?></td>       
                     <td>
                         <!-- JAVNO tj svi i admin i ulogovani -->

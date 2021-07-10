@@ -21,7 +21,16 @@
             </tr>
         </thead>
         <tbody>
+
+        
+
+        <?php  if(isset($_SESSION['userid']) && $_SESSION['permission']=='admin'){                 ?>
             <a href="addteam.php"  class="btn btn-primary">Add new team </a>
+            <?php } ?>
+
+            <br><br>
+
+            
             <?php $counter=0; while($r= $results->fetch(PDO::FETCH_ASSOC))    { $counter+=1;    ?>
                 <tr>
                     <!-- <th scope="row"><?php echo $r['team_id']  ?></th> -->

@@ -16,7 +16,7 @@
             <input required type="text" class="form-control" id="firstName" placeholder="Enter First name " name="firstName">
         </div>
         <div class="mb-3">
-            <label for="lastName" class="form-label">last name</label>
+            <label for="lastName" class="form-label">Last name</label>
             <input required type="text" class="form-control" id="lastName" placeholder="Enter Last name " name="lastName">
         </div>
         <div class="mb-3">
