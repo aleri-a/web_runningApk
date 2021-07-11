@@ -134,7 +134,7 @@
         }
         if($sex=='M')
         {
-            $length=$length/$ageFactor;
+            $length=(float)$length/(float)$ageFactor;
         }
 
         $ap=0;
