@@ -74,21 +74,21 @@
                 <th scope="col">End date</th>
                 <th scope="col">Team name </th>
                 <th scope="col">Length</th>
-                <th scope="col">Nagib</th>
+                <!-- <th scope="col">Nagib</th> -->
                 <th scope="col">Time</th>
                 <th scope="col">Score</th>
             </tr>
         </thead>
         <tbody>
-            <?php  foreach($recordsStatistic as $rcdSt){  ?> 
+            <?php  $counter=0; foreach($recordsStatistic as $rcdSt){ $counter+=1;  ?> 
                 <tr>
-                    <th scope="row"><?php echo $rcdSt['id']  ?></th>
+                    <th scope="row"><?php echo $counter  ?></th>
                     <td><?php echo $rcdSt['competitionname']  ?></td>
                     <td><?php echo $rcdSt['startdate']  ?></td>
                     <td><?php echo $rcdSt['enddate']  ?></td>
                     <td><?php echo $rcdSt['teamname']  ?></td>
                     <td><?php echo $rcdSt['length']  ?></td>
-                    <td><?php echo $rcdSt['nagib']  ?></td>
+                    <!-- <td><?php echo $rcdSt['nagib']  ?></td> -->
                     <td><?php echo $rcdSt['hour'].":".$rcdSt['min'].":".$rcdSt['sec']  ?></td>
                     <!-- <td><?php echo $rcdSt['score']  ?></td> -->
                     <td><?php echo number_format((float)$rcdSt['score'], 2, '.', '') ?></td>

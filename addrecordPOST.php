@@ -31,13 +31,13 @@
 
             $gpx = new phpGPX();	
             $file = $gpx->load($fileName.'.gpx');
-                
+            $oneLine=[];    
             foreach ($file->tracks as $track)
             {
                 foreach ($track->segments as $segment)
                 {
                     $oneLine= $segment->stats->toArray();
-                    myprint_r($oneLine);
+                    //myprint_r($oneLine);
                     $length=$oneLine['distance']; //in meters
                     $length=$length/1000;         //in km 
                     $nagib=$oneLine['minAltitude']; 
@@ -91,7 +91,11 @@
         {
             echo "<div class='alert alert-success' role='alert'>
                     Operation has been complited, you added $points points.
-                    </div>";
+                    </div><br>";
+                    if($gpxFile)  
+                    {
+                        myprint_r($oneLine);
+                    }
            // header("Location: viewallct.php");                
         }
         else 
@@ -103,9 +107,9 @@
     function myprint_r($my_array) {
         if (is_array($my_array)) {
             echo "<table border=1 cellspacing=0 cellpadding=3 width=100%>";
-            echo '<tr><td colspan=2 style="background-color:#333333;"><strong><font color=white>ARRAY</font></strong></td></tr>';
+            echo '<tr><td colspan=2 style="background-color:#0f5132;"><strong><font color=white>Values from .gpx file</font></strong></td></tr>';
             foreach ($my_array as $k => $v) {
-                    echo '<tr><td valign="top" style="width:40px;background-color:#F0F0F0;">';
+                    echo '<tr><td valign="top" style="width:40px;background-color:#d1e7dd;">';
                     echo '<strong>' . $k . "</strong></td><td>";
                     myprint_r($v);
                     echo "</td></tr>";
@@ -141,7 +145,7 @@
 
 
         
-        //$p=number_format((float)$p, 2, '.', ''); //zaokruziti br na dve decimale 
+        $p=number_format((float)$p, 2, '.', ''); //zaokruziti br na dve decimale 
         return $p;
        
    }
