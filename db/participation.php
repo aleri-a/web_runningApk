@@ -104,7 +104,7 @@
                 return $arrayIds;
             }
             catch(PDOException $e) {
-                echo "Catch u getTeamsforCt2 , id_competiiton=$id_competition";
+                echo "Catch u getTeamsforCt2 ";
                 echo $e->getMessage();
                 return false;
             }
@@ -200,7 +200,7 @@
                     where pt.person_id is null and pt.team_id in ($parentTeams)";
 
                     $stmt= $this->db->prepare($sql2);
-                    $stmt->bindparam(':parentTeams',$parentTeams); //dobijem ct gde se takmice ti timovi 
+                    //$stmt->bindparam(':parentTeams',$parentTeams); //dobijem ct gde se takmice ti timovi 
                     
                     $result= $stmt->execute();
                     $result=$stmt->fetchAll();
