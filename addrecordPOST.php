@@ -149,6 +149,8 @@
 
         
         $p=number_format((float)$p, 2, '.', ''); //zaokruziti br na dve decimale 
+
+        echo '            izracunao  poene            '.$p;
         return $p;
        
    }
