@@ -87,7 +87,7 @@
                 left join competition ct on pt.competition_id=ct.id
                 where pt.team_id in ($str )";
                 $stmt= $this->db->prepare($sql);
-                $stmt-> bindparam (':id',$str); 
+               // $stmt-> bindparam (':id',$str); 
                 $stmt->execute();
                 $result=$stmt->fetchAll();
                 return $result;
