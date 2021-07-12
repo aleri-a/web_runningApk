@@ -35,9 +35,11 @@
             echo'  line 35';
             $file = $gpx->load($fileName.'.gpx');
             echo'  line 37';
+        
             $oneLine=[];    
             echo'  line 39';
-            //echo ('file: '.$file);
+            echo ('file: '.$fileName);
+            print_r($file);
             foreach ($file->tracks as $track)
             {  echo ('line 42,  ');
                 foreach ($track->segments as $segment)
