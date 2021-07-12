@@ -19,12 +19,14 @@
         $hh=0;
         $mm=0;
         $ss=0;
+        echo 'Usao u addrecordPOst';
 
         if($gpxFile)                                                                                                    //Check if the gpx file is uploaded
         {
+            echo'Postoji gpx file';
             $target_dir=dirname(__FILE__).'/';
             $extension=pathinfo($_FILES["gpxfile"]["name"], PATHINFO_EXTENSION);
-            $fileName="gpxFile";
+            $fileName="      gpxFile        ";
             $destination="$target_dir$fileName.$extension";
             
             move_uploaded_file($gpxFile,$destination);                                                                  //place the file in current directory with contant name
@@ -37,7 +39,7 @@
                 foreach ($track->segments as $segment)
                 {
                     $oneLine= $segment->stats->toArray();
-                    //myprint_r($oneLine);
+                   print_r($oneLine);
                     $length=$oneLine['distance']; //in meters
                     $length=$length/1000;         //in km 
                     $nagib=$oneLine['minAltitude']; 
@@ -126,6 +128,7 @@
 
    function CalculatePoints($ageFactor,$sex, $length,$nagib,$hh,$mm,$ss)
    {
+       echo '             Racuna poene            ';
        
         if($sex=='F')
         {
