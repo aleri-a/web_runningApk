@@ -85,7 +85,7 @@
         $ageFactor=$factorDB->getFactor($sex,$age); 
         //echo( $ageFactor[0]);
         $points=CalculatePoints($ageFactor,$sex, $length,$nagib,$hh,$mm,$ss);
-        
+        echo "   poeni:$points";
         $issuccess=$recordDB->insertRecord($personId,$participation_id,$points,$hh,$mm,$ss,$length,$nagib) ;
         
 
@@ -102,7 +102,7 @@
         }
         else 
         {           
-           // include 'includes/errormessage.php';
+            include 'includes/errormessage.php';
         }
     }
 

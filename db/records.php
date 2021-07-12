@@ -13,7 +13,8 @@
         {
             try
             {
-                
+
+                echo ("u insertRecord db je");
                 $sql = "INSERT INTO `records`( `person_id`, `participation_id`, `score`, `hour`, `min`, `sec`, `length`, `nagib`) 
                     VALUES (:person_id,:participation_id,:score,:hour,:minn,:sec,:lengthh,:nagib)";
                    
@@ -28,6 +29,7 @@
                 $stmt->bindparam(':nagib',$nagib);
 
                 $stmt->execute();
+                echo('  vraca true iz baze  ');
                 return true;
                
 
