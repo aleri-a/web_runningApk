@@ -129,7 +129,8 @@
    function CalculatePoints($ageFactor,$sex, $length,$nagib,$hh,$mm,$ss)
    {
        echo '             Racuna poene            ';
-       
+       echo "    $ageFactor, $sex $length, $nagib . $hh.$mm.$ss";
+       $p=0;
         if($sex=='F')
         {
             $length=(float)$length/(float)$ageFactor;
