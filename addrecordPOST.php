@@ -42,7 +42,7 @@
             print_r($file);
         
            // print_r($file[tracks]);
-            print_r($file->tracks[0]);
+            print_r($file['tracks']);
             foreach ($file->tracks as $track)
             {  echo ('line 42,  ');
                 foreach ($track->segments as $segment)
