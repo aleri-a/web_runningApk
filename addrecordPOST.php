@@ -34,10 +34,12 @@
             $gpx = new phpGPX();	
             $file = $gpx->load($fileName.'.gpx');
             $oneLine=[];    
+            echo ('file: '.$file);
             foreach ($file->tracks as $track)
-            {
+            {  echo ('u jedan track ');
                 foreach ($track->segments as $segment)
                 {
+                    echo ('u jedan linija ');
                     $oneLine= $segment->stats->toArray();
                    print_r($oneLine);
                     $length=$oneLine['distance']; //in meters
