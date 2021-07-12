@@ -26,14 +26,17 @@
             echo'Postoji gpx file';
             $target_dir=dirname(__FILE__).'/';
             $extension=pathinfo($_FILES["gpxfile"]["name"], PATHINFO_EXTENSION);
-            $fileName="      gpxFile        ";
+            $fileName="gpxFile";
             $destination="$target_dir$fileName.$extension";
-            
+            echo'  line 31';
             move_uploaded_file($gpxFile,$destination);                                                                  //place the file in current directory with contant name
-
+            echo'  line 33  ';
             $gpx = new phpGPX();	
+            echo'  line 35';
             $file = $gpx->load($fileName.'.gpx');
+            echo'  line 37';
             $oneLine=[];    
+            echo'  line 39';
             echo ('file: '.$file);
             foreach ($file->tracks as $track)
             {  echo ('u jedan track ');
