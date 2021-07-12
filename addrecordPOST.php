@@ -43,9 +43,9 @@
         
            // print_r($file[tracks]);
             print_r($file['tracks']);
-            foreach ($file->tracks as $track)
+            foreach ($file['tracks'] as $track) //$file->tracks as $track)
             {  echo ('line 42,  ');
-                foreach ($track->segments as $segment)
+                foreach ($track['segments'] as $segment) //($track->segments as $segment)
                 {
                     echo ('u jedan linija ');
                     $oneLine= $segment->stats->toArray();
