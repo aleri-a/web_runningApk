@@ -10,10 +10,17 @@
     // $charset = 'utf8mb4';
 
 //Remote database connection
+    // $host = 'remotemysql.com';
+    // $db ='tN6xtPw2E2';
+    // $user = 'tN6xtPw2E2';
+    // $pass = 'jjAuFM0SUO';
+    // $charset = 'utf8mb4';
+
+
     $host = 'remotemysql.com';
-    $db ='tN6xtPw2E2';
-    $user = 'tN6xtPw2E2';
-    $pass = 'jjAuFM0SUO';
+    $db ='M7UijrD2Si';
+    $user = 'M7UijrD2Si';
+    $pass = 'a7SsbYzcyv';
     $charset = 'utf8mb4';
 
     //in PDO conectivity, ie data source name ie way of connecting

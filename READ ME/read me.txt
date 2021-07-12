@@ -1,0 +1,2 @@
+IN order to have database, create the database and runn script from this folder, it containcs tables and data.
+In project there is folder db fajl conn, write proper information for your database 
