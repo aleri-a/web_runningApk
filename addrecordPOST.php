@@ -37,9 +37,9 @@
             echo'  line 37';
             $oneLine=[];    
             echo'  line 39';
-            echo ('file: '.$file);
+            //echo ('file: '.$file);
             foreach ($file->tracks as $track)
-            {  echo ('u jedan track ');
+            {  echo ('line 42,  ');
                 foreach ($track->segments as $segment)
                 {
                     echo ('u jedan linija ');
@@ -55,6 +55,7 @@
                     $ss=$timeDuration-(60*$mmTotal);
                     $hh=intdiv($mmTotal,60);
                     $mm=$mmTotal-($hh*60);
+                    echo ("time>".$timeDuration. "lenghth ".$length);
                 }
             }         
            
