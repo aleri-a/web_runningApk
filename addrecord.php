@@ -61,7 +61,7 @@
             <?php if(!empty($participations)) {?>
             <?php  foreach($participations as $ptt){  ?>            
                 <div class="form-check">
-                <input class="form-check-input" type="radio" name="addrecordRdb" id="addrecordRdb" value=<?php echo $ptt['id'] ?>>
+                <input required class="form-check-input" type="radio" name="addrecordRdb" id="addrecordRdb" value=<?php echo $ptt['id'] ?>>
             
                     <div class="card" style="width: 40%">
                     <div class="card-body">

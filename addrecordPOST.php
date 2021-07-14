@@ -19,37 +19,31 @@
         $hh=0;
         $mm=0;
         $ss=0;
-        echo 'Usao u addrecordPOst';
+   
 
         if($gpxFile)                                                                                                    //Check if the gpx file is uploaded
         {
-            echo'Postoji gpx file';
+          
             $target_dir=dirname(__FILE__).'/';
             $extension=pathinfo($_FILES["gpxfile"]["name"], PATHINFO_EXTENSION);
             $fileName="gpxFile";
             $destination="$target_dir$fileName.$extension";
-            echo'  line 31';
-            move_uploaded_file($gpxFile,$destination);                                                                  //place the file in current directory with contant name
-            echo'  line 33  ';
-            $gpx = new phpGPX();	
-            echo'  line 35';
-            $file = $gpx->load($fileName.'.gpx');
-            echo'  line 37';
-        
+           
+            move_uploaded_file($gpxFile,$destination);                          //place the file in current directory with contant name
+         
+            $gpx = new phpGPX();	     
+            $file = $gpx->load($fileName.'.gpx');         
             $oneLine=[];    
-            echo'  line 39';
-            echo ('   file: '.$fileName);
-            print_r($file);
-        
+            
            // print_r($file[tracks]);
-            print_r($file['tracks']);
-            foreach ($file['tracks'] as $track) //$file->tracks as $track)
-            {  echo ('line 42,  ');
-                foreach ($track['segments'] as $segment) //($track->segments as $segment)
+            
+            foreach ($file->tracks as $track) //Na webu ne moze da cita ovo pa je to greska tj moze da pristupi sa ['tracks'] ali opet nesto nije ok 
+            {  
+                foreach ($track->segments as $segment) //($track->segments as $segment)
                 {
-                    echo ('u jedan linija ');
+              
                     $oneLine= $segment->stats->toArray();
-                   print_r($oneLine);
+                  
                     $length=$oneLine['distance']; //in meters
                     $length=$length/1000;         //in km 
                     $nagib=$oneLine['minAltitude']; 
@@ -60,7 +54,7 @@
                     $ss=$timeDuration-(60*$mmTotal);
                     $hh=intdiv($mmTotal,60);
                     $mm=$mmTotal-($hh*60);
-                    echo ("time>".$timeDuration. "lenghth ".$length);
+                   
                 }
             }         
            
@@ -96,7 +90,7 @@
         $ageFactor=$factorDB->getFactor($sex,$age); 
         //echo( $ageFactor[0]);
         $points=CalculatePoints($ageFactor,$sex, $length,$nagib,$hh,$mm,$ss);
-        echo "   poeni:$points";
+        
         $issuccess=$recordDB->insertRecord($personId,$participation_id,$points,$hh,$mm,$ss,$length,$nagib) ;
         
 
@@ -139,8 +133,7 @@
 
    function CalculatePoints($ageFactor,$sex, $length,$nagib,$hh,$mm,$ss)
    {
-       echo '             Racuna poene            ';
-       echo "    $ageFactor, $sex $length, $nagib . $hh.$mm.$ss";
+     
        $p=0;
         if($sex=='F')
         {
@@ -162,7 +155,7 @@
         
         $p=number_format((float)$p, 2, '.', ''); //zaokruziti br na dve decimale 
 
-        echo '            izracunao  poene            '.$p;
+      
         return $p;
        
    }
